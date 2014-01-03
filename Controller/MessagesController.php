@@ -173,6 +173,12 @@ class MessagesController extends AppController {
 		}
 	}
 	
+	/**
+	 * Get latest message by threadId and messageId
+	 * Enter description here ...
+	 * @param unknown_type $threadId
+	 * @param unknown_type $messageId
+	 */
 	public function getLatestMessage($threadId, $messageId){
 		$responseData = array('status' => 'success', 'data' => '', 'error' => '');
 		//if($this->request->is('ajax')){
@@ -181,18 +187,20 @@ class MessagesController extends AppController {
 			$this->autoRender = false;
 			// Render message list
 			$messages = $this->Message->getMessages($threadId, $messageId);
+			
 	        // Render message list
 	        $view = new View($this, false);
 	        $view->layout = false;
 	        $view->set(compact('messages', $messages));
 	        $view->viewPath = 'Messages';
-	        $message_list_html = $view->render('messages');
-	        var_dump($message_list_html);exit();
+	        $message_with_template = $view->render('messages');
+
 	        // Set response data
-        	$responseData['data']['messages'] = $message_list_html;
+        	$responseData['data']['messages'] = $message_with_template;
         	$responseData['data']['count'] = count($messages);
         	$responseData['data']['status'] = 'success';
 			
+        	var_dump($responseData);
 			header('Content-Type: application/json');
         	echo json_encode($responseData);
 		//}

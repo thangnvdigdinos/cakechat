@@ -11,7 +11,7 @@
 			'inputDefaults' => array(
 			    'format' => array('before', 'label', 'between', 'input', 'error', 'after'),
 			    'div' => array('class' => 'form-group'),
-			    'class' => array('form-control'),
+			    'class' => array('form-text'),
 			    'label' => array('class' => 'navbar-text'),
 			    'between' => '<div class="form-group">',
 			    'after' => '</div>',

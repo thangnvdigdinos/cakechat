@@ -84,6 +84,7 @@ class ThreadsController extends AppController {
 	************************************************/
 	public function view($id = null, $messageId = null)
 	{
+		$lastUpdated = "";
 		if($this->request->is('get'))
 		{
 			if(!$id)
@@ -99,7 +100,7 @@ class ThreadsController extends AppController {
 			if(isset($thread['Message']) && count($thread['Message']) > 0)
 			{
 				$lastMessage = $thread['Message'][count($thread['Message']) -1];
-				$this->set('lastMessageId', $lastMessage['id']);
+				$this->set('lastUpdated', $lastMessage['updated']);
 			}
 		}
 

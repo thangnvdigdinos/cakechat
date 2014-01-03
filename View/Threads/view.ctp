@@ -95,7 +95,6 @@
 			    'error' => array('attributes' => array('wrap' => 'span', 'class' => 'help-inline')),
 			)));
 			echo $this->Form->input('thread_id', array('type' => 'hidden', 'value' => $thread['Thread']['id']));
-			echo $this->Form->input('updated', array('type' => 'hidden', 'value' => $lastUpdated));
 			echo $this->Form->input('content');
 			echo $this->Form->end($options);
 		?>
