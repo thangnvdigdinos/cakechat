@@ -39,21 +39,31 @@
 				<tr>
 					<td><?php echo $message['id']; ?></td>
 					<td>
-						<?php echo $message['content']; ?>
+						<?php 
+							if($message['status'] ==1) 
+							{
+								echo "<p style='color:red'>".$message['content']; 
+								echo " (Has removed)</p>"; 
+							}
+							else{
+								echo $message['content'];
+							}
+						?>
 					</td>
 					<td>
-					<?php 
-						echo $this->Form->postLink(
-							'Delete',
-							array('controller' => 'messages', 'action' => 'delete', $message['id'], $thread['Thread']['id']),
-							array('confirm' => __('are you sure to delete?'))
-						);
-					?> /
 					<?php
-						echo $this->Html->link(
-							'Edit',
-							array('controller' => 'threads', 'action' => 'view', $thread['Thread']['id'], $message['id'])
-						);
+						if($message['status'] != 1){
+							echo $this->Form->postLink(
+								'Delete',
+								array('controller' => 'messages', 'action' => 'delete', $message['id'], $thread['Thread']['id']),
+								array('confirm' => __('are you sure to delete?'))
+							);
+							echo "/";
+							echo $this->Html->link(
+								'Edit',
+								array('controller' => 'threads', 'action' => 'view', $thread['Thread']['id'], $message['id'])
+							);
+						}
 					?>
 					</td>
 					<td><?php echo $thread['User']['username']; ?></td>
@@ -67,17 +77,6 @@
 	</div>
 	<nav class="navbar navbar-default" role="navigation">
 		<div class="collapse navbar-collapse" id="bs-example-navbar-collapse-1">
-		<!--
-		<form class="navbar-form navbar-left" role="message" action="/chatdemo/messages/add/threadid:<?php echo $thread['Thread']['id'];?>">
-			<p class="navbar-text">message</p>
-		    <div class="form-group">
-		    	<input type="text" class="form-control" placeholder="message">
-		    </div>
-	      <button type="submit" class="btn btn-default"><?php echo __('Save Message');?></button>
-	      <input type='hidden' id='lastMessageId' value="<?php echo $lastMessageId;?>"/>
-		  <input type="hidden" name="data[Message][thread_id]" class="form-control" value="<?php echo $thread['Thread']['id'];?>" id="MessageThreadId"/>
-	    </form>
-	    -->
 		<?php
 			$options = array(
 			    'label' => 'Save Message',
@@ -96,7 +95,7 @@
 			    'error' => array('attributes' => array('wrap' => 'span', 'class' => 'help-inline')),
 			)));
 			echo $this->Form->input('thread_id', array('type' => 'hidden', 'value' => $thread['Thread']['id']));
-			echo $this->Form->input('last_message_id', array('type' => 'hidden', 'value' => $lastMessageId));
+			echo $this->Form->input('updated', array('type' => 'hidden', 'value' => $lastUpdated));
 			echo $this->Form->input('content');
 			echo $this->Form->end($options);
 		?>
