@@ -1,5 +1,5 @@
 $(document).ready(function() {
-		auReloadLatestMessages(6000);
+		//auReloadLatestMessages(6000);
 	}
 );
 
