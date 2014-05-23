@@ -7,7 +7,8 @@
         }	   
     ],	   
     "require": {	   
-        "pear-cakephp/cakephp": ">=2.4.0"	   
+        "pear-cakephp/cakephp": ">=2.4.0",
+	"nervetattoo/elasticsearch" : ">=2.0"   
     },	   
     "config": {	   
         "vendor-dir": "Vendor/"	   
