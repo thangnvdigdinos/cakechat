@@ -19,7 +19,7 @@
  */
 
 App::uses('AppController', 'Controller');
-
+use \ElasticSearch\Client;
 /**
  * Static content controller
  *
@@ -131,6 +131,14 @@ class MessagesController extends AppController {
 			if ($this->Message->save($this->request->data)) {
 				$this->Session->setFlash(__('Your message has been saved.'));
 				
+				// The recommended way to go about things is to use an environment variable called ELASTICSEARCH_URL
+                $es = Client::connection();
+
+                // Alternatively you can use dsn string
+                $es = Client::connection('http://172.17.1.188:9200/chatsystem/message');
+                $es->index($this->request->data, $id);
+                $es->get($id);
+
 				//after save message then redirect to thread detail page
 				return $this->redirect(array('controller' => 'threads', 'action' => 'view', $this->request->data['Message']['thread_id']));
 			}
