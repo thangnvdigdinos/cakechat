@@ -52,7 +52,7 @@ if (!defined('APP_DIR')) {
  * The following line differs from its sibling
  * /app/webroot/index.php
  */
-define('CAKE_CORE_INCLUDE_PATH',  DS . 'vagrant' . DS . 'chatdemo' . DS . 'Vendor' . DS . 'pear-pear.cakephp.org' . DS . 'CakePHP');
+define('CAKE_CORE_INCLUDE_PATH',  ROOT.DS.APP_DIR. DS . 'Vendor' . DS . 'pear-pear.cakephp.org' . DS . 'CakePHP');
 
 /**
  * Editing below this line should NOT be necessary.
@@ -86,6 +86,7 @@ if (!defined('CAKE_CORE_INCLUDE_PATH')) {
 		$failed = true;
 	}
 }
+
 if (!empty($failed)) {
 	trigger_error("CakePHP core could not be found. Check the value of CAKE_CORE_INCLUDE_PATH in APP/webroot/index.php. It should point to the directory containing your " . DS . "cake core directory and your " . DS . "vendors root directory.", E_USER_ERROR);
 }
