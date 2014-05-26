@@ -26,9 +26,11 @@ class Message extends AppModel {
      * Checking owner message
      * @param Message object $message
      * @param User object $user
+     * 
      * @author ThangNV
      */
-    public function isOwnedBy($message, $user) {
+    public function isOwnedBy($message, $user) 
+    {
         return $this->field('id', array('id' => $message, 'user_id' => $user)) === $message;
     }
 
@@ -37,9 +39,11 @@ class Message extends AppModel {
      * Get message detail by thread id and message id
      * @param int $threadId
      * @param int $messageId
+     * 
      * @author ThangNV
      */
-    public function getMessages($threadId, $messageId){
+    public function getMessages($threadId, $messageId)
+    {
         $conditions = array(
             'joins' => array(
                 array(

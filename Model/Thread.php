@@ -38,4 +38,5 @@ class Thread extends AppModel {
     {
         return $this->field('id', array('id' => $thread, 'user_id' => $user)) === $thread;
     }
+    
 }
