@@ -4,21 +4,21 @@ App::uses('SimplePasswordHasher', 'Controller/Component/Auth');
 /**
  * User Model
  *
- * @property 1 $1
+ * @author ThangNV
  */
 class User extends AppModel {
+    
 	public $name = 'User';
-	
 	public $primaryKey = 'id';
-	/**
-	 * Use database config
-	 *
-	 * @var string
-	 */
 	public $useTable = 'users';
 	
 	var $hasMany = array('Thread');
-	
+
+	/**
+	* Pre processing data before saving into db
+	* 
+	* @author ThangNV
+	*/
 	public function beforeSave($options = Array())
 	{
 		if (isset($this->data[$this->alias]['password'])) {
@@ -34,6 +34,8 @@ class User extends AppModel {
 	 * Checking owner user
 	 * @param User object $userId
 	 * @param User object $user
+	 * 
+	 * @author ThangNV
 	 */
 	public function isOwnedBy($userId, $user) {
 	    return $this->field('id', array('id' => $userId, 'id' => $user)) === $userId;

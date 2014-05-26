@@ -1,35 +1,24 @@
 <?php
 App::uses('CakeSession', 'Model/Datasource');
+
 /**
  * Message Model
- *
- * @property 1 $1
+ * 
+ * @author ThangNV
  */
 class Message extends AppModel {
-	public $name = 'Message';
-	
+
+    public $name = 'Message';
 	public $primaryKey = 'id';
-	/**
-	 * Use database config
-	 *
-	 * @var string
-	 */
 	public $useTable = 'messages';
-	
-	// Which db table to use
-	//var $belongsTo = array('Thread','User');
 	
 	/**
 	* Pre processing data before saving into db
+	* 
+	* @author ThangNV
 	*/
 	public function beforeSave($options = Array())
 	{
-//		if($this->data)
-//		{
-//			$uid = CakeSession::read("Auth.User.id");
-//			$this->data[$this->alias]['user_id'] = $uid;
-//		}
-
 		return true;
 	}
 	
@@ -37,11 +26,19 @@ class Message extends AppModel {
 	 * Checking owner message
 	 * @param Message object $message
 	 * @param User object $user
+	 * @author ThangNV
 	 */
 	public function isOwnedBy($message, $user) {
 	    return $this->field('id', array('id' => $message, 'user_id' => $user)) === $message;
 	}
 	
+	/**
+	 * 
+	 * Get message detail by thread id and message id
+	 * @param int $threadId
+	 * @param int $messageId
+	 * @author ThangNV
+	 */
 	public function getMessages($threadId, $messageId){
         $conditions = array(
             'joins' => array(
