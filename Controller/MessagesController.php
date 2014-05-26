@@ -137,8 +137,8 @@ class MessagesController extends AppController {
 				
 				// The recommended way to go about things is to use an environment variable called ELASTICSEARCH_URL
 				$params['hosts'] = array (
-                    '192.168.1.1:9200',         // IP + Port
-                    '192.168.1.2',              // Just IP
+                    '172.17.1.188:9200',         // IP + Port
+                    '172.17.1.191:9200',              // Just IP
 				);
 
                 // Alternatively you can use dsn string
