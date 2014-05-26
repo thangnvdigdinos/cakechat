@@ -139,6 +139,7 @@ class MessagesController extends AppController {
 				);*/
 				
 				$params = Configure::read('hosts');
+		var_dump($params);die();
 
                 // Alternatively you can use dsn string
                 $client = new Elasticsearch\Client($params);
