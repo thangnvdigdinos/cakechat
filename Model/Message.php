@@ -26,6 +26,7 @@ class Message extends AppModel {
      * Checking owner message
      * @param Message object $message
      * @param User object $user
+     * 
      * @author ThangNV
      */
     public function isOwnedBy($message, $user) {
@@ -37,6 +38,7 @@ class Message extends AppModel {
      * Get message detail by thread id and message id
      * @param int $threadId
      * @param int $messageId
+     * 
      * @author ThangNV
      */
     public function getMessages($threadId, $messageId){

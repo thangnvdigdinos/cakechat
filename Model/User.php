@@ -41,4 +41,5 @@ class User extends AppModel {
     {
         return $this->field('id', array('id' => $userId, 'id' => $user)) === $userId;
     }
+    
 }
