@@ -13,8 +13,6 @@ class Thread extends AppModel {
     public $useTable = 'threads';
 
     var $hasMany = array('Message');
-
-    // Which db table to use
     var $belongsTo = array('User');
 
     /**
