@@ -8,3 +8,239 @@ Stack Trace:
 #3 /var/www/html/cakechat/Vendor/pear-pear.cakephp.org/CakePHP/Cake/Core/App.php(902): App::_checkFatalError()
 #4 [internal function]: App::shutdown()
 #5 {main}
+2014-05-26 11:17:58 Error: Fatal Error (64): require_once() [<a href='http://php.net/function.require'>function.require</a>]: Failed opening required '/var/www/html/Vendor/autoload.php' (include_path='.:/usr/share/pear:/usr/share/php') in [/var/www/html/cakechat/Controller/AppController.php, line 14]
+2014-05-26 11:17:58 Error: [FatalErrorException] require_once() [<a href='http://php.net/function.require'>function.require</a>]: Failed opening required '/var/www/html/Vendor/autoload.php' (include_path='.:/usr/share/pear:/usr/share/php')
+Request URL: /
+Stack Trace:
+#0 /var/www/html/cakechat/Vendor/pear-pear.cakephp.org/CakePHP/Cake/Error/ErrorHandler.php(203): ErrorHandler::handleFatalError(64, 'require_once() ...', '/var/www/html/c...', 14)
+#1 [internal function]: ErrorHandler::handleError(64, 'require_once() ...', '/var/www/html/c...', 14, Array)
+#2 /var/www/html/cakechat/Vendor/pear-pear.cakephp.org/CakePHP/Cake/Core/App.php(929): call_user_func('ErrorHandler::h...', 64, 'require_once() ...', '/var/www/html/c...', 14, Array)
+#3 /var/www/html/cakechat/Vendor/pear-pear.cakephp.org/CakePHP/Cake/Core/App.php(902): App::_checkFatalError()
+#4 [internal function]: App::shutdown()
+#5 {main}
+2014-05-26 11:19:06 Error: Fatal Error (64): require_once() [<a href='http://php.net/function.require'>function.require</a>]: Failed opening required '/var/www/html/Vendor/autoload.php' (include_path='.:/usr/share/pear:/usr/share/php') in [/var/www/html/cakechat/Controller/AppController.php, line 14]
+2014-05-26 11:19:06 Error: [FatalErrorException] require_once() [<a href='http://php.net/function.require'>function.require</a>]: Failed opening required '/var/www/html/Vendor/autoload.php' (include_path='.:/usr/share/pear:/usr/share/php')
+Request URL: /
+Stack Trace:
+#0 /var/www/html/cakechat/Vendor/pear-pear.cakephp.org/CakePHP/Cake/Error/ErrorHandler.php(203): ErrorHandler::handleFatalError(64, 'require_once() ...', '/var/www/html/c...', 14)
+#1 [internal function]: ErrorHandler::handleError(64, 'require_once() ...', '/var/www/html/c...', 14, Array)
+#2 /var/www/html/cakechat/Vendor/pear-pear.cakephp.org/CakePHP/Cake/Core/App.php(929): call_user_func('ErrorHandler::h...', 64, 'require_once() ...', '/var/www/html/c...', 14, Array)
+#3 /var/www/html/cakechat/Vendor/pear-pear.cakephp.org/CakePHP/Cake/Core/App.php(902): App::_checkFatalError()
+#4 [internal function]: App::shutdown()
+#5 {main}
+2014-05-26 11:20:47 Error: Fatal Error (64): require_once() [<a href='http://php.net/function.require'>function.require</a>]: Failed opening required 'cakechat/Vendor/autoload.php' (include_path='.:/usr/share/pear:/usr/share/php') in [/var/www/html/cakechat/Controller/AppController.php, line 14]
+2014-05-26 11:20:47 Error: [FatalErrorException] require_once() [<a href='http://php.net/function.require'>function.require</a>]: Failed opening required 'cakechat/Vendor/autoload.php' (include_path='.:/usr/share/pear:/usr/share/php')
+Request URL: /
+Stack Trace:
+#0 /var/www/html/cakechat/Vendor/pear-pear.cakephp.org/CakePHP/Cake/Error/ErrorHandler.php(203): ErrorHandler::handleFatalError(64, 'require_once() ...', '/var/www/html/c...', 14)
+#1 [internal function]: ErrorHandler::handleError(64, 'require_once() ...', '/var/www/html/c...', 14, Array)
+#2 /var/www/html/cakechat/Vendor/pear-pear.cakephp.org/CakePHP/Cake/Core/App.php(929): call_user_func('ErrorHandler::h...', 64, 'require_once() ...', '/var/www/html/c...', 14, Array)
+#3 /var/www/html/cakechat/Vendor/pear-pear.cakephp.org/CakePHP/Cake/Core/App.php(902): App::_checkFatalError()
+#4 [internal function]: App::shutdown()
+#5 {main}
+2014-05-26 11:21:06 Error: Fatal Error (64): require_once() [<a href='http://php.net/function.require'>function.require</a>]: Failed opening required 'cakechat/Vendor/autoload.php' (include_path='.:/usr/share/pear:/usr/share/php') in [/var/www/html/cakechat/Controller/AppController.php, line 15]
+2014-05-26 11:21:06 Error: [FatalErrorException] require_once() [<a href='http://php.net/function.require'>function.require</a>]: Failed opening required 'cakechat/Vendor/autoload.php' (include_path='.:/usr/share/pear:/usr/share/php')
+Request URL: /
+Stack Trace:
+#0 /var/www/html/cakechat/Vendor/pear-pear.cakephp.org/CakePHP/Cake/Error/ErrorHandler.php(203): ErrorHandler::handleFatalError(64, 'require_once() ...', '/var/www/html/c...', 15)
+#1 [internal function]: ErrorHandler::handleError(64, 'require_once() ...', '/var/www/html/c...', 15, Array)
+#2 /var/www/html/cakechat/Vendor/pear-pear.cakephp.org/CakePHP/Cake/Core/App.php(929): call_user_func('ErrorHandler::h...', 64, 'require_once() ...', '/var/www/html/c...', 15, Array)
+#3 /var/www/html/cakechat/Vendor/pear-pear.cakephp.org/CakePHP/Cake/Core/App.php(902): App::_checkFatalError()
+#4 [internal function]: App::shutdown()
+#5 {main}
+2014-05-26 11:21:12 Error: Fatal Error (64): require_once() [<a href='http://php.net/function.require'>function.require</a>]: Failed opening required 'cakechat/Vendor/autoload.php' (include_path='.:/usr/share/pear:/usr/share/php') in [/var/www/html/cakechat/Controller/AppController.php, line 15]
+2014-05-26 11:21:12 Error: [FatalErrorException] require_once() [<a href='http://php.net/function.require'>function.require</a>]: Failed opening required 'cakechat/Vendor/autoload.php' (include_path='.:/usr/share/pear:/usr/share/php')
+Request URL: /
+Stack Trace:
+#0 /var/www/html/cakechat/Vendor/pear-pear.cakephp.org/CakePHP/Cake/Error/ErrorHandler.php(203): ErrorHandler::handleFatalError(64, 'require_once() ...', '/var/www/html/c...', 15)
+#1 [internal function]: ErrorHandler::handleError(64, 'require_once() ...', '/var/www/html/c...', 15, Array)
+#2 /var/www/html/cakechat/Vendor/pear-pear.cakephp.org/CakePHP/Cake/Core/App.php(929): call_user_func('ErrorHandler::h...', 64, 'require_once() ...', '/var/www/html/c...', 15, Array)
+#3 /var/www/html/cakechat/Vendor/pear-pear.cakephp.org/CakePHP/Cake/Core/App.php(902): App::_checkFatalError()
+#4 [internal function]: App::shutdown()
+#5 {main}
+2014-05-26 11:21:12 Error: Fatal Error (64): require_once() [<a href='http://php.net/function.require'>function.require</a>]: Failed opening required 'cakechat/Vendor/autoload.php' (include_path='.:/usr/share/pear:/usr/share/php') in [/var/www/html/cakechat/Controller/AppController.php, line 15]
+2014-05-26 11:21:12 Error: [FatalErrorException] require_once() [<a href='http://php.net/function.require'>function.require</a>]: Failed opening required 'cakechat/Vendor/autoload.php' (include_path='.:/usr/share/pear:/usr/share/php')
+Request URL: /
+Stack Trace:
+#0 /var/www/html/cakechat/Vendor/pear-pear.cakephp.org/CakePHP/Cake/Error/ErrorHandler.php(203): ErrorHandler::handleFatalError(64, 'require_once() ...', '/var/www/html/c...', 15)
+#1 [internal function]: ErrorHandler::handleError(64, 'require_once() ...', '/var/www/html/c...', 15, Array)
+#2 /var/www/html/cakechat/Vendor/pear-pear.cakephp.org/CakePHP/Cake/Core/App.php(929): call_user_func('ErrorHandler::h...', 64, 'require_once() ...', '/var/www/html/c...', 15, Array)
+#3 /var/www/html/cakechat/Vendor/pear-pear.cakephp.org/CakePHP/Cake/Core/App.php(902): App::_checkFatalError()
+#4 [internal function]: App::shutdown()
+#5 {main}
+2014-05-26 11:21:12 Error: Fatal Error (64): require_once() [<a href='http://php.net/function.require'>function.require</a>]: Failed opening required 'cakechat/Vendor/autoload.php' (include_path='.:/usr/share/pear:/usr/share/php') in [/var/www/html/cakechat/Controller/AppController.php, line 15]
+2014-05-26 11:21:12 Error: [FatalErrorException] require_once() [<a href='http://php.net/function.require'>function.require</a>]: Failed opening required 'cakechat/Vendor/autoload.php' (include_path='.:/usr/share/pear:/usr/share/php')
+Request URL: /
+Stack Trace:
+#0 /var/www/html/cakechat/Vendor/pear-pear.cakephp.org/CakePHP/Cake/Error/ErrorHandler.php(203): ErrorHandler::handleFatalError(64, 'require_once() ...', '/var/www/html/c...', 15)
+#1 [internal function]: ErrorHandler::handleError(64, 'require_once() ...', '/var/www/html/c...', 15, Array)
+#2 /var/www/html/cakechat/Vendor/pear-pear.cakephp.org/CakePHP/Cake/Core/App.php(929): call_user_func('ErrorHandler::h...', 64, 'require_once() ...', '/var/www/html/c...', 15, Array)
+#3 /var/www/html/cakechat/Vendor/pear-pear.cakephp.org/CakePHP/Cake/Core/App.php(902): App::_checkFatalError()
+#4 [internal function]: App::shutdown()
+#5 {main}
+2014-05-26 11:21:12 Error: Fatal Error (64): require_once() [<a href='http://php.net/function.require'>function.require</a>]: Failed opening required 'cakechat/Vendor/autoload.php' (include_path='.:/usr/share/pear:/usr/share/php') in [/var/www/html/cakechat/Controller/AppController.php, line 15]
+2014-05-26 11:21:12 Error: [FatalErrorException] require_once() [<a href='http://php.net/function.require'>function.require</a>]: Failed opening required 'cakechat/Vendor/autoload.php' (include_path='.:/usr/share/pear:/usr/share/php')
+Request URL: /
+Stack Trace:
+#0 /var/www/html/cakechat/Vendor/pear-pear.cakephp.org/CakePHP/Cake/Error/ErrorHandler.php(203): ErrorHandler::handleFatalError(64, 'require_once() ...', '/var/www/html/c...', 15)
+#1 [internal function]: ErrorHandler::handleError(64, 'require_once() ...', '/var/www/html/c...', 15, Array)
+#2 /var/www/html/cakechat/Vendor/pear-pear.cakephp.org/CakePHP/Cake/Core/App.php(929): call_user_func('ErrorHandler::h...', 64, 'require_once() ...', '/var/www/html/c...', 15, Array)
+#3 /var/www/html/cakechat/Vendor/pear-pear.cakephp.org/CakePHP/Cake/Core/App.php(902): App::_checkFatalError()
+#4 [internal function]: App::shutdown()
+#5 {main}
+2014-05-26 11:21:16 Error: Fatal Error (64): require_once() [<a href='http://php.net/function.require'>function.require</a>]: Failed opening required 'cakechat/Vendor/autoload.php' (include_path='.:/usr/share/pear:/usr/share/php') in [/var/www/html/cakechat/Controller/AppController.php, line 15]
+2014-05-26 11:21:16 Error: [FatalErrorException] require_once() [<a href='http://php.net/function.require'>function.require</a>]: Failed opening required 'cakechat/Vendor/autoload.php' (include_path='.:/usr/share/pear:/usr/share/php')
+Request URL: /
+Stack Trace:
+#0 /var/www/html/cakechat/Vendor/pear-pear.cakephp.org/CakePHP/Cake/Error/ErrorHandler.php(203): ErrorHandler::handleFatalError(64, 'require_once() ...', '/var/www/html/c...', 15)
+#1 [internal function]: ErrorHandler::handleError(64, 'require_once() ...', '/var/www/html/c...', 15, Array)
+#2 /var/www/html/cakechat/Vendor/pear-pear.cakephp.org/CakePHP/Cake/Core/App.php(929): call_user_func('ErrorHandler::h...', 64, 'require_once() ...', '/var/www/html/c...', 15, Array)
+#3 /var/www/html/cakechat/Vendor/pear-pear.cakephp.org/CakePHP/Cake/Core/App.php(902): App::_checkFatalError()
+#4 [internal function]: App::shutdown()
+#5 {main}
+2014-05-26 11:21:16 Error: Fatal Error (64): require_once() [<a href='http://php.net/function.require'>function.require</a>]: Failed opening required 'cakechat/Vendor/autoload.php' (include_path='.:/usr/share/pear:/usr/share/php') in [/var/www/html/cakechat/Controller/AppController.php, line 15]
+2014-05-26 11:21:16 Error: [FatalErrorException] require_once() [<a href='http://php.net/function.require'>function.require</a>]: Failed opening required 'cakechat/Vendor/autoload.php' (include_path='.:/usr/share/pear:/usr/share/php')
+Request URL: /
+Stack Trace:
+#0 /var/www/html/cakechat/Vendor/pear-pear.cakephp.org/CakePHP/Cake/Error/ErrorHandler.php(203): ErrorHandler::handleFatalError(64, 'require_once() ...', '/var/www/html/c...', 15)
+#1 [internal function]: ErrorHandler::handleError(64, 'require_once() ...', '/var/www/html/c...', 15, Array)
+#2 /var/www/html/cakechat/Vendor/pear-pear.cakephp.org/CakePHP/Cake/Core/App.php(929): call_user_func('ErrorHandler::h...', 64, 'require_once() ...', '/var/www/html/c...', 15, Array)
+#3 /var/www/html/cakechat/Vendor/pear-pear.cakephp.org/CakePHP/Cake/Core/App.php(902): App::_checkFatalError()
+#4 [internal function]: App::shutdown()
+#5 {main}
+2014-05-26 11:21:17 Error: Fatal Error (64): require_once() [<a href='http://php.net/function.require'>function.require</a>]: Failed opening required 'cakechat/Vendor/autoload.php' (include_path='.:/usr/share/pear:/usr/share/php') in [/var/www/html/cakechat/Controller/AppController.php, line 15]
+2014-05-26 11:21:17 Error: [FatalErrorException] require_once() [<a href='http://php.net/function.require'>function.require</a>]: Failed opening required 'cakechat/Vendor/autoload.php' (include_path='.:/usr/share/pear:/usr/share/php')
+Request URL: /
+Stack Trace:
+#0 /var/www/html/cakechat/Vendor/pear-pear.cakephp.org/CakePHP/Cake/Error/ErrorHandler.php(203): ErrorHandler::handleFatalError(64, 'require_once() ...', '/var/www/html/c...', 15)
+#1 [internal function]: ErrorHandler::handleError(64, 'require_once() ...', '/var/www/html/c...', 15, Array)
+#2 /var/www/html/cakechat/Vendor/pear-pear.cakephp.org/CakePHP/Cake/Core/App.php(929): call_user_func('ErrorHandler::h...', 64, 'require_once() ...', '/var/www/html/c...', 15, Array)
+#3 /var/www/html/cakechat/Vendor/pear-pear.cakephp.org/CakePHP/Cake/Core/App.php(902): App::_checkFatalError()
+#4 [internal function]: App::shutdown()
+#5 {main}
+2014-05-26 11:21:50 Error: Fatal Error (64): require_once() [<a href='http://php.net/function.require'>function.require</a>]: Failed opening required 'cakechat/Vendor/autoload.php' (include_path='.:/usr/share/pear:/usr/share/php') in [/var/www/html/cakechat/Controller/AppController.php, line 15]
+2014-05-26 11:21:50 Error: [FatalErrorException] require_once() [<a href='http://php.net/function.require'>function.require</a>]: Failed opening required 'cakechat/Vendor/autoload.php' (include_path='.:/usr/share/pear:/usr/share/php')
+Request URL: /
+Stack Trace:
+#0 /var/www/html/cakechat/Vendor/pear-pear.cakephp.org/CakePHP/Cake/Error/ErrorHandler.php(203): ErrorHandler::handleFatalError(64, 'require_once() ...', '/var/www/html/c...', 15)
+#1 [internal function]: ErrorHandler::handleError(64, 'require_once() ...', '/var/www/html/c...', 15, Array)
+#2 /var/www/html/cakechat/Vendor/pear-pear.cakephp.org/CakePHP/Cake/Core/App.php(929): call_user_func('ErrorHandler::h...', 64, 'require_once() ...', '/var/www/html/c...', 15, Array)
+#3 /var/www/html/cakechat/Vendor/pear-pear.cakephp.org/CakePHP/Cake/Core/App.php(902): App::_checkFatalError()
+#4 [internal function]: App::shutdown()
+#5 {main}
+2014-05-26 11:21:51 Error: Fatal Error (64): require_once() [<a href='http://php.net/function.require'>function.require</a>]: Failed opening required 'cakechat/Vendor/autoload.php' (include_path='.:/usr/share/pear:/usr/share/php') in [/var/www/html/cakechat/Controller/AppController.php, line 15]
+2014-05-26 11:21:51 Error: [FatalErrorException] require_once() [<a href='http://php.net/function.require'>function.require</a>]: Failed opening required 'cakechat/Vendor/autoload.php' (include_path='.:/usr/share/pear:/usr/share/php')
+Request URL: /
+Stack Trace:
+#0 /var/www/html/cakechat/Vendor/pear-pear.cakephp.org/CakePHP/Cake/Error/ErrorHandler.php(203): ErrorHandler::handleFatalError(64, 'require_once() ...', '/var/www/html/c...', 15)
+#1 [internal function]: ErrorHandler::handleError(64, 'require_once() ...', '/var/www/html/c...', 15, Array)
+#2 /var/www/html/cakechat/Vendor/pear-pear.cakephp.org/CakePHP/Cake/Core/App.php(929): call_user_func('ErrorHandler::h...', 64, 'require_once() ...', '/var/www/html/c...', 15, Array)
+#3 /var/www/html/cakechat/Vendor/pear-pear.cakephp.org/CakePHP/Cake/Core/App.php(902): App::_checkFatalError()
+#4 [internal function]: App::shutdown()
+#5 {main}
+2014-05-26 11:21:52 Error: Fatal Error (64): require_once() [<a href='http://php.net/function.require'>function.require</a>]: Failed opening required 'cakechat/Vendor/autoload.php' (include_path='.:/usr/share/pear:/usr/share/php') in [/var/www/html/cakechat/Controller/AppController.php, line 15]
+2014-05-26 11:21:52 Error: [FatalErrorException] require_once() [<a href='http://php.net/function.require'>function.require</a>]: Failed opening required 'cakechat/Vendor/autoload.php' (include_path='.:/usr/share/pear:/usr/share/php')
+Request URL: /
+Stack Trace:
+#0 /var/www/html/cakechat/Vendor/pear-pear.cakephp.org/CakePHP/Cake/Error/ErrorHandler.php(203): ErrorHandler::handleFatalError(64, 'require_once() ...', '/var/www/html/c...', 15)
+#1 [internal function]: ErrorHandler::handleError(64, 'require_once() ...', '/var/www/html/c...', 15, Array)
+#2 /var/www/html/cakechat/Vendor/pear-pear.cakephp.org/CakePHP/Cake/Core/App.php(929): call_user_func('ErrorHandler::h...', 64, 'require_once() ...', '/var/www/html/c...', 15, Array)
+#3 /var/www/html/cakechat/Vendor/pear-pear.cakephp.org/CakePHP/Cake/Core/App.php(902): App::_checkFatalError()
+#4 [internal function]: App::shutdown()
+#5 {main}
+2014-05-26 11:21:52 Error: Fatal Error (64): require_once() [<a href='http://php.net/function.require'>function.require</a>]: Failed opening required 'cakechat/Vendor/autoload.php' (include_path='.:/usr/share/pear:/usr/share/php') in [/var/www/html/cakechat/Controller/AppController.php, line 15]
+2014-05-26 11:21:52 Error: [FatalErrorException] require_once() [<a href='http://php.net/function.require'>function.require</a>]: Failed opening required 'cakechat/Vendor/autoload.php' (include_path='.:/usr/share/pear:/usr/share/php')
+Request URL: /
+Stack Trace:
+#0 /var/www/html/cakechat/Vendor/pear-pear.cakephp.org/CakePHP/Cake/Error/ErrorHandler.php(203): ErrorHandler::handleFatalError(64, 'require_once() ...', '/var/www/html/c...', 15)
+#1 [internal function]: ErrorHandler::handleError(64, 'require_once() ...', '/var/www/html/c...', 15, Array)
+#2 /var/www/html/cakechat/Vendor/pear-pear.cakephp.org/CakePHP/Cake/Core/App.php(929): call_user_func('ErrorHandler::h...', 64, 'require_once() ...', '/var/www/html/c...', 15, Array)
+#3 /var/www/html/cakechat/Vendor/pear-pear.cakephp.org/CakePHP/Cake/Core/App.php(902): App::_checkFatalError()
+#4 [internal function]: App::shutdown()
+#5 {main}
+2014-05-26 11:21:52 Error: Fatal Error (64): require_once() [<a href='http://php.net/function.require'>function.require</a>]: Failed opening required 'cakechat/Vendor/autoload.php' (include_path='.:/usr/share/pear:/usr/share/php') in [/var/www/html/cakechat/Controller/AppController.php, line 15]
+2014-05-26 11:21:52 Error: [FatalErrorException] require_once() [<a href='http://php.net/function.require'>function.require</a>]: Failed opening required 'cakechat/Vendor/autoload.php' (include_path='.:/usr/share/pear:/usr/share/php')
+Request URL: /
+Stack Trace:
+#0 /var/www/html/cakechat/Vendor/pear-pear.cakephp.org/CakePHP/Cake/Error/ErrorHandler.php(203): ErrorHandler::handleFatalError(64, 'require_once() ...', '/var/www/html/c...', 15)
+#1 [internal function]: ErrorHandler::handleError(64, 'require_once() ...', '/var/www/html/c...', 15, Array)
+#2 /var/www/html/cakechat/Vendor/pear-pear.cakephp.org/CakePHP/Cake/Core/App.php(929): call_user_func('ErrorHandler::h...', 64, 'require_once() ...', '/var/www/html/c...', 15, Array)
+#3 /var/www/html/cakechat/Vendor/pear-pear.cakephp.org/CakePHP/Cake/Core/App.php(902): App::_checkFatalError()
+#4 [internal function]: App::shutdown()
+#5 {main}
+2014-05-26 11:21:52 Error: Fatal Error (64): require_once() [<a href='http://php.net/function.require'>function.require</a>]: Failed opening required 'cakechat/Vendor/autoload.php' (include_path='.:/usr/share/pear:/usr/share/php') in [/var/www/html/cakechat/Controller/AppController.php, line 15]
+2014-05-26 11:21:52 Error: [FatalErrorException] require_once() [<a href='http://php.net/function.require'>function.require</a>]: Failed opening required 'cakechat/Vendor/autoload.php' (include_path='.:/usr/share/pear:/usr/share/php')
+Request URL: /
+Stack Trace:
+#0 /var/www/html/cakechat/Vendor/pear-pear.cakephp.org/CakePHP/Cake/Error/ErrorHandler.php(203): ErrorHandler::handleFatalError(64, 'require_once() ...', '/var/www/html/c...', 15)
+#1 [internal function]: ErrorHandler::handleError(64, 'require_once() ...', '/var/www/html/c...', 15, Array)
+#2 /var/www/html/cakechat/Vendor/pear-pear.cakephp.org/CakePHP/Cake/Core/App.php(929): call_user_func('ErrorHandler::h...', 64, 'require_once() ...', '/var/www/html/c...', 15, Array)
+#3 /var/www/html/cakechat/Vendor/pear-pear.cakephp.org/CakePHP/Cake/Core/App.php(902): App::_checkFatalError()
+#4 [internal function]: App::shutdown()
+#5 {main}
+2014-05-26 11:25:46 Error: Fatal Error (1): Class 'ElasticSearch\Client' not found in [/var/www/html/cakechat/Controller/MessagesController.php, line 135]
+2014-05-26 11:25:46 Error: [FatalErrorException] Class 'ElasticSearch\Client' not found
+Request URL: /messages/add/threadid:2
+Stack Trace:
+#0 /var/www/html/cakechat/Vendor/pear-pear.cakephp.org/CakePHP/Cake/Error/ErrorHandler.php(203): ErrorHandler::handleFatalError(1, 'Class 'ElasticS...', '/var/www/html/c...', 135)
+#1 [internal function]: ErrorHandler::handleError(1, 'Class 'ElasticS...', '/var/www/html/c...', 135, Array)
+#2 /var/www/html/cakechat/Vendor/pear-pear.cakephp.org/CakePHP/Cake/Core/App.php(929): call_user_func('ErrorHandler::h...', 1, 'Class 'ElasticS...', '/var/www/html/c...', 135, Array)
+#3 /var/www/html/cakechat/Vendor/pear-pear.cakephp.org/CakePHP/Cake/Core/App.php(902): App::_checkFatalError()
+#4 [internal function]: App::shutdown()
+#5 {main}
+2014-05-26 11:33:18 Error: [PDOException] SQLSTATE[42000]: Syntax error or access violation: 1064 You have an error in your SQL syntax; check the manual that corresponds to your MySQL server version for the right syntax to use near 'lastInsertId' at line 1
+Request URL: /messages/add/threadid:2
+Stack Trace:
+#0 /var/www/html/cakechat/Vendor/pear-pear.cakephp.org/CakePHP/Cake/Model/Datasource/DboSource.php(458): PDOStatement->execute(Array)
+#1 /var/www/html/cakechat/Vendor/pear-pear.cakephp.org/CakePHP/Cake/Model/Datasource/DboSource.php(424): DboSource->_execute('lastInsertId', Array)
+#2 /var/www/html/cakechat/Vendor/pear-pear.cakephp.org/CakePHP/Cake/Model/Datasource/DboSource.php(666): DboSource->execute('lastInsertId', Array, Array)
+#3 /var/www/html/cakechat/Vendor/pear-pear.cakephp.org/CakePHP/Cake/Model/Datasource/DboSource.php(609): DboSource->fetchAll('lastInsertId', Array, Array)
+#4 /var/www/html/cakechat/Vendor/pear-pear.cakephp.org/CakePHP/Cake/Model/Model.php(800): DboSource->query('lastInsertId', Array, Object(Message))
+#5 /var/www/html/cakechat/Controller/MessagesController.php(134): Model->__call('lastInsertId', Array)
+#6 /var/www/html/cakechat/Controller/MessagesController.php(134): Message->lastInsertId()
+#7 [internal function]: MessagesController->add()
+#8 /var/www/html/cakechat/Vendor/pear-pear.cakephp.org/CakePHP/Cake/Controller/Controller.php(490): ReflectionMethod->invokeArgs(Object(MessagesController), Array)
+#9 /var/www/html/cakechat/Vendor/pear-pear.cakephp.org/CakePHP/Cake/Routing/Dispatcher.php(191): Controller->invokeAction(Object(CakeRequest))
+#10 /var/www/html/cakechat/Vendor/pear-pear.cakephp.org/CakePHP/Cake/Routing/Dispatcher.php(165): Dispatcher->_invoke(Object(MessagesController), Object(CakeRequest))
+#11 /var/www/html/cakechat/webroot/index.php(100): Dispatcher->dispatch(Object(CakeRequest), Object(CakeResponse))
+#12 {main}
+2014-05-26 11:37:35 Error: Fatal Error (1): Class 'Client' not found in [/var/www/html/cakechat/Controller/MessagesController.php, line 145]
+2014-05-26 11:37:35 Error: [FatalErrorException] Class 'Client' not found
+Request URL: /messages/add/threadid:2
+Stack Trace:
+#0 /var/www/html/cakechat/Vendor/pear-pear.cakephp.org/CakePHP/Cake/Error/ErrorHandler.php(203): ErrorHandler::handleFatalError(1, 'Class 'Client' ...', '/var/www/html/c...', 145)
+#1 [internal function]: ErrorHandler::handleError(1, 'Class 'Client' ...', '/var/www/html/c...', 145, Array)
+#2 /var/www/html/cakechat/Vendor/pear-pear.cakephp.org/CakePHP/Cake/Core/App.php(929): call_user_func('ErrorHandler::h...', 1, 'Class 'Client' ...', '/var/www/html/c...', 145, Array)
+#3 /var/www/html/cakechat/Vendor/pear-pear.cakephp.org/CakePHP/Cake/Core/App.php(902): App::_checkFatalError()
+#4 [internal function]: App::shutdown()
+#5 {main}
+2014-05-26 11:41:22 Error: [Elasticsearch\Common\Exceptions\Curl\CouldNotConnectToHost] Failed connect to 192.168.1.1:9200; Operation now in progress
+Request URL: /messages/add/threadid:2
+Stack Trace:
+#0 /var/www/html/cakechat/Vendor/elasticsearch/elasticsearch/src/Elasticsearch/Connections/GuzzleConnection.php(307): Elasticsearch\Connections\AbstractConnection->throwCurlException(7, 'Failed connect ...')
+#1 /var/www/html/cakechat/Vendor/elasticsearch/elasticsearch/src/Elasticsearch/Connections/GuzzleConnection.php(197): Elasticsearch\Connections\GuzzleConnection->processCurlError(Object(Guzzle\Http\Exception\CurlException))
+#2 /var/www/html/cakechat/Vendor/elasticsearch/elasticsearch/src/Elasticsearch/Connections/GuzzleConnection.php(104): Elasticsearch\Connections\GuzzleConnection->sendRequest(Object(Guzzle\Http\Message\EntityEnclosingRequest), '{"testField":"a...')
+#3 /var/www/html/cakechat/Vendor/elasticsearch/elasticsearch/src/Elasticsearch/Transport.php(166): Elasticsearch\Connections\GuzzleConnection->performRequest('PUT', '/chatsystem/mes...', Array, '{"testField":"a...')
+#4 /var/www/html/cakechat/Vendor/elasticsearch/elasticsearch/src/Elasticsearch/Transport.php(197): Elasticsearch\Transport->performRequest('PUT', '/chatsystem/mes...', Array, '{"testField":"a...')
+#5 /var/www/html/cakechat/Vendor/elasticsearch/elasticsearch/src/Elasticsearch/Endpoints/AbstractEndpoint.php(86): Elasticsearch\Transport->performRequest('PUT', '/chatsystem/mes...', Array, Array)
+#6 /var/www/html/cakechat/Vendor/elasticsearch/elasticsearch/src/Elasticsearch/Client.php(857): Elasticsearch\Endpoints\AbstractEndpoint->performRequest()
+#7 /var/www/html/cakechat/Controller/MessagesController.php(155): Elasticsearch\Client->index(Array)
+#8 [internal function]: MessagesController->add()
+#9 /var/www/html/cakechat/Vendor/pear-pear.cakephp.org/CakePHP/Cake/Controller/Controller.php(490): ReflectionMethod->invokeArgs(Object(MessagesController), Array)
+#10 /var/www/html/cakechat/Vendor/pear-pear.cakephp.org/CakePHP/Cake/Routing/Dispatcher.php(191): Controller->invokeAction(Object(CakeRequest))
+#11 /var/www/html/cakechat/Vendor/pear-pear.cakephp.org/CakePHP/Cake/Routing/Dispatcher.php(165): Dispatcher->_invoke(Object(MessagesController), Object(CakeRequest))
+#12 /var/www/html/cakechat/webroot/index.php(100): Dispatcher->dispatch(Object(CakeRequest), Object(CakeResponse))
+#13 {main}
+2014-05-26 13:12:39 Error: [Elasticsearch\Common\Exceptions\UnexpectedValueException] 0 is not a recognized parameter
+Request URL: /messages/add/threadid:2
+Stack Trace:
+#0 /var/www/html/cakechat/Vendor/elasticsearch/elasticsearch/src/Elasticsearch/Common/DICBuilder.php(72): Elasticsearch\Common\DICBuilder->checkParamWhitelist(Array)
+#1 /var/www/html/cakechat/Vendor/elasticsearch/elasticsearch/src/Elasticsearch/Client.php(1266): Elasticsearch\Common\DICBuilder->__construct(Array, Array)
+#2 /var/www/html/cakechat/Vendor/elasticsearch/elasticsearch/src/Elasticsearch/Client.php(84): Elasticsearch\Client->setParams(Array)
+#3 /var/www/html/cakechat/Controller/MessagesController.php(144): Elasticsearch\Client->__construct(Array)
+#4 [internal function]: MessagesController->add()
+#5 /var/www/html/cakechat/Vendor/pear-pear.cakephp.org/CakePHP/Cake/Controller/Controller.php(490): ReflectionMethod->invokeArgs(Object(MessagesController), Array)
+#6 /var/www/html/cakechat/Vendor/pear-pear.cakephp.org/CakePHP/Cake/Routing/Dispatcher.php(191): Controller->invokeAction(Object(CakeRequest))
+#7 /var/www/html/cakechat/Vendor/pear-pear.cakephp.org/CakePHP/Cake/Routing/Dispatcher.php(165): Dispatcher->_invoke(Object(MessagesController), Object(CakeRequest))
+#8 /var/www/html/cakechat/webroot/index.php(100): Dispatcher->dispatch(Object(CakeRequest), Object(CakeResponse))
+#9 {main}
