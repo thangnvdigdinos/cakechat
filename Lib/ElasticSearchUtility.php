@@ -1,7 +1,55 @@
 <?php
 class ElasticSearchUtility {
 
-    function __construct($params = array())
+    protected static $instance = null;
+    protected $client = null;
+
+    /**
+     * Returns the *Singleton* instance of this class.
+     *
+     * @staticvar Singleton $instance The *Singleton* instances of this class.
+     *
+     * @return Singleton The *Singleton* instance.
+     */
+    public static function getInstance()
+    {
+        if (null === self::$instance) {
+            self::$instance = new static();
+        }
+
+        return self::$instance;
+    }
+
+    /**
+     * Protected constructor to prevent creating a new instance of the
+     * *Singleton* via the `new` operator from outside of this class.
+     */
+    protected function __construct()
+    {
+        //Get hosts array from config file
+        $host['hosts'] = Configure::read('hosts');
+
+        // Alternatively you can use dsn string
+        $this->client = new Elasticsearch\Client($host);
+    }
+
+    /**
+     * Private clone method to prevent cloning of the instance of the
+     * *Singleton* instance.
+     *
+     * @return void
+     */
+    private function __clone()
+    {
+    }
+
+    /**
+     * Private unserialize method to prevent unserializing of the *Singleton*
+     * instance.
+     *
+     * @return void
+     */
+    private function __wakeup()
     {
     }
 
@@ -11,7 +59,7 @@ class ElasticSearchUtility {
      *
      * @author ThangNV
      */
-    public static function exists($params = array())
+    public function exists($params = array())
     {
         if (!isset($params)) {
             throw Exception('The index does not exist.');
@@ -21,13 +69,13 @@ class ElasticSearchUtility {
             throw Exception('The index does not exist.');
         }
 
-        //Get hosts array from config file
-        $host['hosts'] = Configure::read('hosts');
+        //        //Get hosts array from config file
+        //        $host['hosts'] = Configure::read('hosts');
+        //
+        //        // Alternatively you can use dsn string
+        //        $client = new Elasticsearch\Client($host);
 
-        // Alternatively you can use dsn string
-        $client = new Elasticsearch\Client($host);
-
-        return $client->indices()->exists($params['index']);
+        return $this->client->indices()->exists($params['index']);
     }
 
     /**
@@ -36,7 +84,7 @@ class ElasticSearchUtility {
      *
      * @author ThangNV
      */
-    public static function index($params = array())
+    public function index($params = array())
     {
         if (!isset($params)) {
             throw Exception('The index does not exist.');
@@ -46,23 +94,22 @@ class ElasticSearchUtility {
             throw Exception('The index does not exist.');
         }
 
-        //Get hosts array from config file
-        $host['hosts'] = Configure::read('hosts');
+        //        //Get hosts array from config file
+        //        $host['hosts'] = Configure::read('hosts');
+        //
+        //        // Alternatively you can use dsn string
+        //        $client = new Elasticsearch\Client($host);
 
-        // Alternatively you can use dsn string
-        $client = new Elasticsearch\Client($host);
-
-        $client->index($params);
+        $this->client->index($params);
     }
 
     /**
      * indexing data via call to ElasticSearch server
-
      * @param array $params
      *
      * @author ThangNV
      */
-    public static function delete($params = array())
+    public function delete($params = array())
     {
         if (!isset($params)) {
             throw Exception('The index does not exist.');
@@ -72,12 +119,12 @@ class ElasticSearchUtility {
             throw Exception('The index does not exist.');
         }
 
-        //Get hosts array from config file
-        $host['hosts'] = Configure::read('hosts');
+        //        //Get hosts array from config file
+        //        $host['hosts'] = Configure::read('hosts');
+        //
+        //        // Alternatively you can use dsn string
+        //        $client = new Elasticsearch\Client($host);
 
-        // Alternatively you can use dsn string
-        $client = new Elasticsearch\Client($host);
-
-        $client->delete($params);
+        $this->client->delete($params);
     }
 }
