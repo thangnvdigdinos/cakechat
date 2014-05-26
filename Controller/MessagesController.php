@@ -49,7 +49,6 @@ class MessagesController extends AppController {
 
     /**
      * Verify authorized user
-
      * @see AppController::isAuthorized()
      * 
      * @author ThangNV

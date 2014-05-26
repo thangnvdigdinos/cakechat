@@ -31,7 +31,7 @@ class ElasticSearchUtility {
     }
 
     /**
-     * indexing data
+     * indexing data 
      * @param array $params
      *
      * @author ThangNV
@@ -57,7 +57,6 @@ class ElasticSearchUtility {
 
     /**
      * indexing data via call to ElasticSearch server
-
      * @param array $params
      *
      * @author ThangNV
@@ -79,5 +78,6 @@ class ElasticSearchUtility {
         $client = new Elasticsearch\Client($host);
 
         $client->delete($params);
+        
     }
 }
