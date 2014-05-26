@@ -76,8 +76,9 @@ class ElasticSearchUtility {
         $host['hosts'] = Configure::read('hosts');
 
         // Alternatively you can use dsn string
-        self::$client = new Elasticsearch\Client($host);
+        $client = new Elasticsearch\Client($host);
 
-        return self::$client->indices()->index($params);
+        return $client->index($params);
+        
     }
 }
