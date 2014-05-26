@@ -11,6 +11,7 @@
  */
 
 App::uses('Controller', 'Controller');
+require_once ROOT.'/Vendor/autoload.php';
 
 /**
  * Application Controller
