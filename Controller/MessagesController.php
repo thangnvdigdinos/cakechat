@@ -142,7 +142,7 @@ class MessagesController extends AppController {
 				);
 
                 // Alternatively you can use dsn string
-                $client = Client::connection($params);
+                $client = new Elasticsearch\Client($params);
                 
                 //Prepare data for indexing
                 $params = array();
