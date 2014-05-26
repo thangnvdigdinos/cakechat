@@ -128,9 +128,11 @@ class MessagesController extends AppController {
 		{
 			$this->request->data['Message']['user_id'] = $this->Auth->user('id');
 			$this->Message->create();
-			if ($this->Message->save($this->request->data)) {
+			$result = $this->Message->save($this->request->data);
+			if ($result) {
 				$this->Session->setFlash(__('Your message has been saved.'));
 				
+				var_dump($result);die();
 				$id = $this->Message->lastInsertId();
 				
 				// The recommended way to go about things is to use an environment variable called ELASTICSEARCH_URL
