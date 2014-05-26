@@ -51,7 +51,8 @@ class MessagesController extends AppController {
 	 * Verify authorized user
 	 * @see AppController::isAuthorized()
 	 ************************************************/
-	public function isAuthorized($user) {
+	public function isAuthorized($user) 
+	{
 	    // All registered users can add posts
 	    if ($this->action === 'add') {
 	        return true;
@@ -100,7 +101,8 @@ class MessagesController extends AppController {
 	 * @param string $id: id of message
 	 * @throws NotFoundException
 	 ************************************************/
-	public function edit($id = null, $threadId = null) {
+	public function edit($id = null, $threadId = null) 
+	{
 		$this->Message->id = $id;
 		if (!$this->Message->exists()) {
 			throw new NotFoundException(__('Invalid message'));
@@ -138,14 +140,15 @@ class MessagesController extends AppController {
                 // Alternatively you can use dsn string
                 $client = new Elasticsearch\Client($params);
 
-		// Get settings for one index
-		$params = array();
-		$params['index'] = 'chatsystem';
-		$ret = $client->indices()->exists($params);
-                //create index
-		if (!$ret) {
-                	$client->indices()->create($params);
-		}
+        		// Get settings for one index
+        		$params = array();
+        		$params['index'] = 'chatsystem';
+        		$ret = $client->indices()->exists($params);
+        		
+                //create index if doesn't exists
+        		if (!$ret) {
+                    $client->indices()->create($params);
+        		}
 
                 //Prepare data for indexing
                 $params = array();
@@ -205,7 +208,8 @@ class MessagesController extends AppController {
 	 * @param unknown_type $threadId
 	 * @param unknown_type $messageId
 	 */
-	public function getLatestMessage($threadId, $messageId){
+	public function getLatestMessage($threadId, $messageId)
+	{
 		$responseData = array('status' => 'success', 'data' => '', 'error' => '');
 		//if($this->request->is('ajax')){
 			$this->disableCache();
