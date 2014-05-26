@@ -79,6 +79,5 @@ class ElasticSearchUtility {
         $client = new Elasticsearch\Client($host);
 
         return $client->index($params);
-        
     }
 }
