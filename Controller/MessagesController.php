@@ -142,7 +142,7 @@ class MessagesController extends AppController {
 
         		// Get settings for one index
         		$params = array();
-        		$params['index'] = 'chatsystem';
+        		$params['index'] = Configure::read('chatsystem_index');
         		$ret = $client->indices()->exists($params);
         		
                 //create index if doesn't exists
