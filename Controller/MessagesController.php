@@ -143,27 +143,6 @@ class MessagesController extends AppController {
             if ($result) {
                 $this->Session->setFlash(__('Your message has been saved.'));
 
-                /*
-                $params['index'] = Configure::read('chatsystem_index');
-                $ret = ElasticSearchUtility::exists($params);
-                
-                //Get hosts array from config file
-                $params['hosts'] = Configure::read('hosts');
-
-                // Alternatively you can use dsn string
-                $client = new Elasticsearch\Client($params);
-
-                // Get settings for one index
-                $params = array();
-                $params['index'] = Configure::read('chatsystem_index');
-                $ret = $client->indices()->exists($params);
-                */
-
-                //create index if doesn't exists
-                /*if (!$ret) {
-                    $client->indices()->create($params);
-                }
-                */
                 //Prepare data for indexing
                 $params = array();
                 $params['body']  = array('content' => $this->request->data['Message']['content']);
