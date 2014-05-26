@@ -105,19 +105,19 @@ class ConsoleShell extends AppShell {
 	}
 
 /**
- * getOptionParser
+ * Gets the option parser instance and configures it.
  *
- * @return void
+ * @return ConsoleOptionParser
  */
 	public function getOptionParser() {
-		$description = array(
+		$parser = parent::getOptionParser();
+
+		$parser->description(array(
 			'The interactive console is a tool for testing parts of your',
 			'app before you write code.',
 			'',
 			'See below for a list of supported commands.'
-		);
-
-		$epilog = array(
+		))->epilog(array(
 			'<info>Model testing</info>',
 			'',
 			'To test model results, use the name of your model without a leading $',
@@ -176,10 +176,9 @@ class ConsoleShell extends AppShell {
 			'To show all connected routes, do the following:',
 			'',
 			"\tRoutes show",
-		);
-		return parent::getOptionParser()
-			->description($description)
-			->epilog($epilog);
+		));
+
+		return $parser;
 	}
 /**
  * Prints the help message
@@ -304,7 +303,7 @@ class ConsoleShell extends AppShell {
 		$validCurrentAssociation = false;
 
 		foreach ($currentAssociations as $model => $currentAssociation) {
-			if ($model == $modelB && $association == $currentAssociation) {
+			if ($model === $modelB && $association === $currentAssociation) {
 				$validCurrentAssociation = true;
 			}
 		}
@@ -329,7 +328,7 @@ class ConsoleShell extends AppShell {
 		$command = str_replace($this->badCommandChars, "", $command);
 
 		// Do we have a valid model?
-		list($modelToCheck, $tmp) = explode('->', $command);
+		list($modelToCheck) = explode('->', $command);
 
 		if ($this->_isValidModel($modelToCheck)) {
 			$findCommand = "\$data = \$this->$command;";
@@ -390,7 +389,7 @@ class ConsoleShell extends AppShell {
 		// Validate the model we're trying to save here
 		$command = strip_tags($command);
 		$command = str_replace($this->badCommandChars, "", $command);
-		list($modelToSave, $tmp) = explode("->", $command);
+		list($modelToSave) = explode("->", $command);
 
 		if ($this->_isValidModel($modelToSave)) {
 			// Extract the array of data we are trying to build

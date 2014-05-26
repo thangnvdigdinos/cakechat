@@ -425,6 +425,12 @@ class Validation {
 				$regex = "/^{$sign}{$dnum}{$exp}$/";
 			}
 		}
+
+		// account for localized floats.
+		$data = localeconv();
+		$check = str_replace($data['thousands_sep'], '', $check);
+		$check = str_replace($data['decimal_point'], '.', $check);
+
 		return self::_check($check, $regex);
 	}
 
@@ -554,7 +560,7 @@ class Validation {
 	}
 
 /**
- * Validate a multiple select.
+ * Validate a multiple select. Comparison is case sensitive by default.
  *
  * Valid Options
  *
@@ -564,12 +570,13 @@ class Validation {
  *
  * @param array $check Value to check
  * @param array $options Options for the check.
- * @param boolean $strict Defaults to true, set to false to disable strict type check
+ * @param boolean $caseInsensitive Set to true for case insensitive comparison.
  * @return boolean Success
  */
-	public static function multiple($check, $options = array(), $strict = true) {
+	public static function multiple($check, $options = array(), $caseInsensitive = false) {
 		$defaults = array('in' => null, 'max' => null, 'min' => null);
-		$options = array_merge($defaults, $options);
+		$options += $defaults;
+
 		$check = array_filter((array)$check);
 		if (empty($check)) {
 			return false;
@@ -581,8 +588,15 @@ class Validation {
 			return false;
 		}
 		if ($options['in'] && is_array($options['in'])) {
+			if ($caseInsensitive) {
+				$options['in'] = array_map('mb_strtolower', $options['in']);
+			}
 			foreach ($check as $val) {
-				if (!in_array($val, $options['in'], $strict)) {
+				$strict = !is_numeric($val);
+				if ($caseInsensitive) {
+					$val = mb_strtolower($val);
+				}
+				if (!in_array((string)$val, $options['in'], $strict)) {
 					return false;
 				}
 			}
@@ -705,8 +719,8 @@ class Validation {
  * $check is a legal finite on this platform
  *
  * @param string $check Value to check
- * @param integer $lower Lower limit
- * @param integer $upper Upper limit
+ * @param int|float $lower Lower limit
+ * @param int|float $upper Upper limit
  * @return boolean Success
  */
 	public static function range($check, $lower = null, $upper = null) {
@@ -780,15 +794,22 @@ class Validation {
 	}
 
 /**
- * Checks if a value is in a given list.
+ * Checks if a value is in a given list. Comparison is case sensitive by default.
  *
- * @param string $check Value to check
- * @param array $list List to check against
- * @param boolean $strict Defaults to true, set to false to disable strict type check
- * @return boolean Success
+ * @param string $check Value to check.
+ * @param array $list List to check against.
+ * @param boolean $caseInsensitive Set to true for case insensitive comparison.
+ * @return boolean Success.
  */
-	public static function inList($check, $list, $strict = true) {
-		return in_array($check, $list, $strict);
+	public static function inList($check, $list, $caseInsensitive = false) {
+		$strict = !is_numeric($check);
+
+		if ($caseInsensitive) {
+			$list = array_map('mb_strtolower', $list);
+			$check = mb_strtolower($check);
+		}
+
+		return in_array((string)$check, $list, $strict);
 	}
 
 /**
@@ -869,7 +890,7 @@ class Validation {
 			'deep' => false,
 			'type' => null
 		);
-		$params = array_merge($defaults, $params);
+		$params += $defaults;
 		if ($params['country'] !== null) {
 			$params['country'] = mb_strtolower($params['country']);
 		}
@@ -910,10 +931,10 @@ class Validation {
 	}
 
 /**
- * Checks the mime type of a file
+ * Checks the mime type of a file.
  *
  * @param string|array $check
- * @param array $mimeTypes to check for
+ * @param array|string $mimeTypes Array of mime types or regex pattern to check.
  * @return boolean Success
  * @throws CakeException when mime type can not be determined.
  */
@@ -927,6 +948,14 @@ class Validation {
 
 		if ($mime === false) {
 			throw new CakeException(__d('cake_dev', 'Can not determine the mimetype.'));
+		}
+
+		if (is_string($mimeTypes)) {
+			return self::_check($mime, $mimeTypes);
+		}
+
+		foreach ($mimeTypes as $key => $val) {
+			$mimeTypes[$key] = strtolower($val);
 		}
 		return in_array($mime, $mimeTypes);
 	}
@@ -964,7 +993,7 @@ class Validation {
 			$check = $check['error'];
 		}
 
-		return $check === UPLOAD_ERR_OK;
+		return (int)$check === UPLOAD_ERR_OK;
 	}
 
 /**

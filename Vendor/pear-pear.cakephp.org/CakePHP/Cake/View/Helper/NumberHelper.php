@@ -66,6 +66,7 @@ class NumberHelper extends AppHelper {
 
 /**
  * Call methods from CakeNumber utility class
+ *
  * @return mixed Whatever is returned by called method, or false on failure
  */
 	public function __call($method, $params) {
@@ -73,6 +74,8 @@ class NumberHelper extends AppHelper {
 	}
 
 /**
+ * Formats a number with a level of precision.
+ *
  * @see CakeNumber::precision()
  *
  * @param float $number A floating point number.
@@ -85,6 +88,8 @@ class NumberHelper extends AppHelper {
 	}
 
 /**
+ * Returns a formatted-for-humans file size.
+ *
  * @see CakeNumber::toReadableSize()
  *
  * @param integer $size Size in bytes
@@ -96,6 +101,12 @@ class NumberHelper extends AppHelper {
 	}
 
 /**
+ * Formats a number into a percentage string.
+ *
+ * Options:
+ *
+ * - `multiply`: Multiply the input value by 100 for decimal percentages.
+ *
  * @see CakeNumber::toPercentage()
  *
  * @param float $number A floating point number
@@ -109,6 +120,8 @@ class NumberHelper extends AppHelper {
 	}
 
 /**
+ * Formats a number into a currency format.
+ *
  * @see CakeNumber::format()
  *
  * @param float $number A floating point number
@@ -122,6 +135,8 @@ class NumberHelper extends AppHelper {
 	}
 
 /**
+ * Formats a number into a currency format.
+ *
  * @see CakeNumber::currency()
  *
  * @param float $number
@@ -137,12 +152,23 @@ class NumberHelper extends AppHelper {
 	}
 
 /**
+ * Add a currency format to the Number helper. Makes reusing
+ * currency formats easier.
+ *
+ * {{{ $this->Number->addFormat('NOK', array('before' => 'Kr. ')); }}}
+ *
+ * You can now use `NOK` as a shortform when formatting currency amounts.
+ *
+ * {{{ $this->Number->currency($value, 'NOK'); }}}
+ *
+ * Added formats are merged with the defaults defined in Cake\Utility\Number::$_currencyDefaults
+ * See Cake\Utility\Number::currency() for more information on the various options and their function.
+ *
  * @see CakeNumber::addFormat()
  *
  * @param string $formatName The format name to be used in the future.
  * @param array $options The array of options for this format.
  * @return void
- * @see NumberHelper::currency()
  * @link http://book.cakephp.org/2.0/en/core-libraries/helpers/number.html#NumberHelper::addFormat
  */
 	public function addFormat($formatName, $options) {
@@ -150,11 +176,12 @@ class NumberHelper extends AppHelper {
 	}
 
 /**
+ * Getter/setter for default currency
+ *
  * @see CakeNumber::defaultCurrency()
  *
  * @param string $currency The currency to be used in the future.
- * @return void
- * @see NumberHelper::currency()
+ * @return string Currency
  */
 	public function defaultCurrency($currency) {
 		return $this->_engine->defaultCurrency($currency);

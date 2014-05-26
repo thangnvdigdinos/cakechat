@@ -33,16 +33,22 @@ class Shell extends Object {
 
 /**
  * Output constant making verbose shells.
+ *
+ * @var integer
  */
 	const VERBOSE = 2;
 
 /**
  * Output constant for making normal shells.
+ *
+ * @var integer
  */
 	const NORMAL = 1;
 
 /**
  * Output constants for making quiet shells.
+ *
+ * @var integer
  */
 	const QUIET = 0;
 
@@ -456,6 +462,7 @@ class Shell extends Object {
 
 /**
  * Gets the option parser instance and configures it.
+ *
  * By overriding this method you can configure the ConsoleOptionParser before returning it.
  *
  * @return ConsoleOptionParser

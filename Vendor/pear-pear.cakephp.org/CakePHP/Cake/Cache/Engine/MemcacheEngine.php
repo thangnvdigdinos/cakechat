@@ -21,7 +21,8 @@
  * control you have over expire times far in the future. See MemcacheEngine::write() for
  * more information.
  *
- * @package       Cake.Cache.Engine
+ * @package Cake.Cache.Engine
+ * @deprecated You should use the Memcached adapter instead.
  */
 class MemcacheEngine extends CacheEngine {
 
@@ -205,13 +206,13 @@ class MemcacheEngine extends CacheEngine {
 		if ($check) {
 			return true;
 		}
-		foreach ($this->_Memcache->getExtendedStats('slabs') as $slabs) {
+		foreach ($this->_Memcache->getExtendedStats('slabs', 0) as $slabs) {
 			foreach (array_keys($slabs) as $slabId) {
 				if (!is_numeric($slabId)) {
 					continue;
 				}
 
-				foreach ($this->_Memcache->getExtendedStats('cachedump', $slabId) as $stats) {
+				foreach ($this->_Memcache->getExtendedStats('cachedump', $slabId, 0) as $stats) {
 					if (!is_array($stats)) {
 						continue;
 					}
