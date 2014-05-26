@@ -138,7 +138,7 @@ class MessagesController extends AppController {
                     '172.17.1.191:9200', // Just IP
 				);*/
 				
-				$params = Configure::read('hosts');
+				$params['hosts'] = Configure::read('hosts');
 
                 // Alternatively you can use dsn string
                 $client = new Elasticsearch\Client($params);
