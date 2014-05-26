@@ -132,8 +132,8 @@ class MessagesController extends AppController {
 			if ($result) {
 				$this->Session->setFlash(__('Your message has been saved.'));
 				
-				var_dump($result);die();
-				$id = $this->Message->lastInsertId();
+				//var_dump($result);die();
+				//$id = $this->Message->lastInsertId();
 				
 				// The recommended way to go about things is to use an environment variable called ELASTICSEARCH_URL
 				$params['hosts'] = array (
@@ -150,7 +150,7 @@ class MessagesController extends AppController {
                 
                 $params['index'] = 'chatsystem';
                 $params['type']  = 'message';
-                $params['id']    = $id;
+                $params['id']    = $result['Message']['id'];
 
                 $client->index($params);
 
