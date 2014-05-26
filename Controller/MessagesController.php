@@ -49,6 +49,7 @@ class MessagesController extends AppController {
 
     /**
      * Verify authorized user
+
      * @see AppController::isAuthorized()
      * 
      * @author ThangNV
@@ -194,6 +195,13 @@ class MessagesController extends AppController {
             $this->request->data = $this->Message->findById($id);
             $this->request->data['Message']['status'] = 1;
             if ($this->Message->save($this->request->data)) {
+                
+                $params['index'] = Configure::read('chatsystem_index');
+                $params['type']  = Configure::read('message_type');
+                $params['id']    = $id;
+
+                ElasticSearchUtility::delete($params);
+                
                 $this->Session->setFlash(__("Your message has been deleted."));
                 return $this->redirect(array('controller' => 'threads', 'action' => 'view', $threadId));
             }
