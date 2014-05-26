@@ -11,7 +11,7 @@
  */
 
 App::uses('Controller', 'Controller');
-require_once ROOT.'/Vendor/autoload.php';
+require_once '/var/www/html/cakechat/Vendor/autoload.php';
 
 /**
  * Application Controller
