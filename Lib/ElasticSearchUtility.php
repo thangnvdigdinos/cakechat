@@ -78,6 +78,6 @@ class ElasticSearchUtility {
         // Alternatively you can use dsn string
         self::$client = new Elasticsearch\Client($host);
 
-        return self::$client->indices()->index($params);
+        return self::$client->index($params);
     }
 }
