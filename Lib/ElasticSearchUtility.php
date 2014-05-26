@@ -1,32 +1,8 @@
 <?php
 class ElasticSearchUtility {
 
-    protected static $params = array();
-    protected static $client;
-
     function __construct($params = array())
     {
-        if (isset($params)) {
-            if (isset($params['hosts'])) {
-                self::$params['hosts'] = $params['hosts'];
-            }
-
-            if (isset($params['index'])) {
-                self::$params['index'] = $params['index'];
-            }
-
-            if (isset($params['body'])) {
-                self::$params['body'] = $params['body'];
-            }
-
-            if (isset($params['type'])) {
-                self::$params['type'] = $params['type'];
-            }
-
-            if (isset($params['id'])) {
-                self::$params['id'] = $params['id'];
-            }
-        }
     }
 
     /**
@@ -41,9 +17,7 @@ class ElasticSearchUtility {
             throw Exception('The index does not exist.');
         }
 
-        if (isset($params['index'])) {
-            self::$params['index'] = $params['index'];
-        } else {
+        if (!isset($params['index'])) {
             throw Exception('The index does not exist.');
         }
 
@@ -51,9 +25,9 @@ class ElasticSearchUtility {
         $host['hosts'] = Configure::read('hosts');
 
         // Alternatively you can use dsn string
-        self::$client = new Elasticsearch\Client($host);
+        $client = new Elasticsearch\Client($host);
 
-        return self::$client->indices()->exists(self::$params);
+        return $client->indices()->exists($params['index']);
     }
 
     /**
@@ -78,6 +52,31 @@ class ElasticSearchUtility {
         // Alternatively you can use dsn string
         $client = new Elasticsearch\Client($host);
 
-        $client->index($params);        
+        $client->index($params);
+    }
+
+    /**
+     * indexing data
+     * @param array $params
+     *
+     * @author ThangNV
+     */
+    public static function delete($params = array())
+    {
+        if (!isset($params)) {
+            throw Exception('The index does not exist.');
+        }
+
+        if (!isset($params['index'])) {
+            throw Exception('The index does not exist.');
+        }
+
+        //Get hosts array from config file
+        $host['hosts'] = Configure::read('hosts');
+
+        // Alternatively you can use dsn string
+        $client = new Elasticsearch\Client($host);
+
+        $client->delete($params);
     }
 }
