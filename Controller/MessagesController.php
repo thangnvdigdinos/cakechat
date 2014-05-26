@@ -34,7 +34,7 @@ class MessagesController extends AppController {
     public $uses = array('Message','Thread');
 
     public $validate = array(
-		'title' => array(
+        'title' => array(
     			'rule' => 'notEmpty'
         ),
     		'content' => array(
@@ -84,7 +84,7 @@ class MessagesController extends AppController {
      ************************************************/
     public function view($id = null)
     {
-        if(!$id)
+        if (!$id)
         {
             throw new NotFoundException(__('Invalid post'));
         }
@@ -127,7 +127,7 @@ class MessagesController extends AppController {
      ************************************************/
     public function add()
     {
-        if($this->request->is('post'))
+        if ($this->request->is('post'))
         {
             $this->request->data['Message']['user_id'] = $this->Auth->user('id');
             $this->Message->create();
@@ -165,9 +165,7 @@ class MessagesController extends AppController {
                 return $this->redirect(array('controller' => 'threads', 'action' => 'view', $this->request->data['Message']['thread_id']));
             }
             $this->Session->setFlash(__('Unable to add your message.'));
-        }
-        else
-        {
+        } else {
             $this->set('threadid', $this->params['named']['threadid']);
         }
     }
@@ -180,22 +178,18 @@ class MessagesController extends AppController {
      ************************************************/
     public function delete($id, $threadId)
     {
-        if(!isset($id))
-        {
+        if (!isset($id)) {
             throw new NotFoundException(__("Invalid Message Id"));
         }
 
-        if($this->request->is('get'))
-        {
+        if ($this->request->is('get')) {
             throw new MethodNotAllowedException();
         }
 
-        if($this->request->is('post'))
-        {
+        if ($this->request->is('post')) {
             $this->request->data = $this->Message->findById($id);
             $this->request->data['Message']['status'] = 1;
-            if($this->Message->save($this->request->data))
-            {
+            if ($this->Message->save($this->request->data)) {
                 $this->Session->setFlash(__("Your message has been deleted."));
                 return $this->redirect(array('controller' => 'threads', 'action' => 'view', $threadId));
             }
