@@ -131,24 +131,23 @@ class MessagesController extends AppController {
 			$result = $this->Message->save($this->request->data);
 			if ($result) {
 				$this->Session->setFlash(__('Your message has been saved.'));
-				
-				// The recommended way to go about things is to use an environment variable called ELASTICSEARCH_URL
-				/*$params['hosts'] = array (
-                    '172.17.1.188:9200', // IP + Port
-                    '172.17.1.191:9200', // Just IP
-				);*/
-				
+
+				//Get hosts array from config file
 				$params['hosts'] = Configure::read('hosts');
 
                 // Alternatively you can use dsn string
                 $client = new Elasticsearch\Client($params);
                 
+                //create index
+                $indexParams['index']  = 'chatsystem';    //index
+                $client->indices()->create($indexParams);
+
                 //Prepare data for indexing
                 $params = array();
                 $params['body']  = array('content' => $this->request->data['Message']['content']);
                 
-                $params['index'] = 'chatsystem';
-                $params['type']  = 'message';
+                $params['index'] = Configure::read('chatsystem_index');
+                $params['type']  = Configure::read('message_type');
                 $params['id']    = $result['Message']['id'];
 
                 $client->index($params);
