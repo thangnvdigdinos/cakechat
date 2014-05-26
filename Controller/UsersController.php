@@ -40,8 +40,11 @@ class UsersController extends AppController {
     /**
      * Verify authorized user
      * @see AppController::isAuthorized()
+     * 
+     * @author ThangNV
      **/
-    public function isAuthorized($user) {
+    public function isAuthorized($user) 
+    {
         // All guest can register user
         if ($this->action === 'add') {
             return true;
@@ -60,6 +63,8 @@ class UsersController extends AppController {
 
     /**
      * Login method for authen method required
+     * 
+     * @author ThangNV
      **/
     public function login()
     {
@@ -74,6 +79,8 @@ class UsersController extends AppController {
 
     /**
      * Logout of system
+     * 
+     * @author ThangNV
      **/
     public function logout()
     {
@@ -82,6 +89,8 @@ class UsersController extends AppController {
 
     /**
      * List all users
+     * 
+     * @author ThangNV
      **/
     public function index()
     {
@@ -91,8 +100,9 @@ class UsersController extends AppController {
     /**
      * View user detail
      * @param string $id: id of user
-     *
      * @throws NotFoundException
+     * 
+     * @author ThangNV
      **/
     public function view($id = null)
     {
@@ -107,12 +117,15 @@ class UsersController extends AppController {
         $this->set('user', $user);
     }
 
-    /************************************************
+    /**
      * Edit user info
      * @param string $id: id of user
      * @throws NotFoundException
-     ************************************************/
-    public function edit($id = null) {
+     * 
+     * @author ThangNV
+     **/
+    public function edit($id = null) 
+    {
         $this->User->id = $id;
         if (!$this->User->exists()) {
             throw new NotFoundException(__('Invalid user'));
@@ -139,6 +152,8 @@ class UsersController extends AppController {
 
     /**
      * Add user info
+     * 
+     * @author ThangNV
      **/
     public function add()
     {
@@ -156,8 +171,11 @@ class UsersController extends AppController {
      * Delete user out of system
      * @param int $id: id of user
      * @throws MethodNotAllowedException
+     * 
+     * @author ThangNV
      **/
-    public function delete($id) {
+    public function delete($id) 
+    {
         if ($this->request->is('get')) {
             throw new MethodNotAllowedException();
         }

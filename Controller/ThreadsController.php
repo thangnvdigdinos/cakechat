@@ -51,7 +51,8 @@ class ThreadsController extends AppController {
      * Verify authorized user
      * @see AppController::isAuthorized()
      **/
-    public function isAuthorized($user) {
+    public function isAuthorized($user) 
+    {
         // All registered users can add thread
         if ($this->action === 'add') {
             return true;
@@ -121,7 +122,8 @@ class ThreadsController extends AppController {
      * @param string $id: id of thread
      * @throws NotFoundException
      **/
-    public function edit($id = null) {
+    public function edit($id = null) 
+    {
         $this->Thread->id = $id;
         if (!$this->Thread->exists()) {
             throw new NotFoundException(__('Invalid thread'));
