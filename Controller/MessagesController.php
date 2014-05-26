@@ -19,7 +19,7 @@
  */
 
 App::uses('AppController', 'Controller');
-use \ElasticSearch\Client;
+
 /**
  * Static content controller
  *
@@ -131,15 +131,28 @@ class MessagesController extends AppController {
 			if ($this->Message->save($this->request->data)) {
 				$this->Session->setFlash(__('Your message has been saved.'));
 				
+				$id = $this->Message->lastInsertId();
+				
 				// The recommended way to go about things is to use an environment variable called ELASTICSEARCH_URL
-                $es = Client::connection();
+				$params['hosts'] = array (
+                    '192.168.1.1:9200',         // IP + Port
+                    '192.168.1.2',              // Just IP
+				);
 
                 // Alternatively you can use dsn string
-                $es = Client::connection('http://172.17.1.188:9200/chatsystem/message');
-                $es->index($this->request->data, $id);
-                $es->get($id);
+                $client = Client::connection($params);
+                
+                //Prepare data for indexing
+                $params = array();
+                $params['body']  = array('testField' => 'abc', 'title' => $this->request->data['Message']['title']);
+                
+                $params['index'] = 'chatsystem';
+                $params['type']  = 'message';
+                $params['id']    = $id;
 
-				//after save message then redirect to thread detail page
+                $client->index($params);
+
+                //after save message then redirect to thread detail page
 				return $this->redirect(array('controller' => 'threads', 'action' => 'view', $this->request->data['Message']['thread_id']));
 			}
 			$this->Session->setFlash(__('Unable to add your message.'));
