@@ -78,6 +78,5 @@ class ElasticSearchUtility {
         $client = new Elasticsearch\Client($host);
 
         $client->delete($params);
-        
     }
 }
