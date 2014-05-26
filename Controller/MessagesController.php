@@ -146,7 +146,7 @@ class MessagesController extends AppController {
                 
                 //Prepare data for indexing
                 $params = array();
-                $params['body']  = array('testField' => 'abc', 'title' => $this->request->data['Message']['title']);
+                $params['body']  = array('testField' => 'abc', 'title' => $this->request->data['Message']['content']);
                 
                 $params['index'] = 'chatsystem';
                 $params['type']  = 'message';
