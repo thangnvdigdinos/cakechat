@@ -116,8 +116,19 @@ class MessagesController extends AppController {
         }
 
         if ($this->request->is('post') || $this->request->is('put')) {
-            if ($this->Message->save($this->request->data)) {
+	    $result = $this->Message->save($this->request->data);
+            if ($result) {
                 $this->Session->setFlash(__('The message has been saved'));
+		
+		//Prepare data for indexing
+                $params = array();
+                $params['body']  = array('content' => $this->request->data['Message']['content']);
+
+                $params['index'] = Configure::read('chatsystem_index');
+                $params['type']  = Configure::read('message_type');
+                $params['id']    = $id;
+
+                ElasticSearchUtility::index($params);
 
                 //after save message then redirect to thread detail page
                 return $this->redirect(array('controller' => 'threads', 'action' => 'view', $this->request->data['Message']['thread_id']));
