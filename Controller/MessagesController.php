@@ -137,10 +137,15 @@ class MessagesController extends AppController {
 
                 // Alternatively you can use dsn string
                 $client = new Elasticsearch\Client($params);
-                
+
+		// Get settings for one index
+		$params = array();
+		$params['index'] = 'chatsystem';
+		$ret = $client->indices()->exists($params);
                 //create index
-                $indexParams['index']  = 'chatsystem';    //index
-                $client->indices()->create($indexParams);
+		if (!$ret) {
+                	$client->indices()->create($params);
+		}
 
                 //Prepare data for indexing
                 $params = array();
