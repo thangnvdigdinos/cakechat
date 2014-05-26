@@ -143,6 +143,9 @@ class MessagesController extends AppController {
             if ($result) {
                 $this->Session->setFlash(__('Your message has been saved.'));
 
+                $params['index'] = Configure::read('chatsystem_index');
+                $ret = ElasticSearchUtility::exists($params);
+                /*
                 //Get hosts array from config file
                 $params['hosts'] = Configure::read('hosts');
 
@@ -153,9 +156,10 @@ class MessagesController extends AppController {
                 $params = array();
                 $params['index'] = Configure::read('chatsystem_index');
                 $ret = $client->indices()->exists($params);
+                */
 
                 //create index if doesn't exists
-                if (!$ret) {
+                /*if (!$ret) {
                     $client->indices()->create($params);
                 }
 
@@ -168,6 +172,7 @@ class MessagesController extends AppController {
                 $params['id']    = $result['Message']['id'];
 
                 $client->index($params);
+                */
 
                 //after save message then redirect to thread detail page
                 return $this->redirect(array('controller' => 'threads', 'action' => 'view', $this->request->data['Message']['thread_id']));
