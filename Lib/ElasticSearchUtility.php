@@ -19,6 +19,7 @@ class ElasticSearchUtility {
 
         return self::$instance;
     }
+    
 
     /**
      * Protected constructor to prevent creating a new instance of the

@@ -140,6 +140,7 @@ class MessagesController extends AppController {
             unset($this->request->data['Message']['password']);
         }
     }
+    
 
     /**
      * Add a message
