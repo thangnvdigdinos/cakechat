@@ -197,7 +197,7 @@ class ThreadsController extends AppController {
 
             $esUtility = ElasticSearchUtility::getInstance();
             $messages = $esUtility->search($params);
-            var_dump($messages);
+            var_dump($messages);die;
             $this->set('thread', $messages);
         }
     }
