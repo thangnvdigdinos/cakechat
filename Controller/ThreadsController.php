@@ -100,21 +100,39 @@ class ThreadsController extends AppController {
                 $lastMessage = $thread['Message'][count($thread['Message']) -1];
                 $this->set('lastUpdated', $lastMessage['updated']);
             }
-        }
 
-        if (isset($messageId)) {
-            $message = $this->Message->findById($messageId);
-            if (!isset($message)) {
-                throw new NotFoundException();
+            if (isset($messageId)) {
+                $message = $this->Message->findById($messageId);
+                if (!isset($message)) {
+                    throw new NotFoundException();
+                }
+                $this->request->data = $message;
+                 
+                $url = array('controller' => 'messages', 'type' => 'post', 'action' => 'edit', 'threadid' => $id);
+            } else {
+                $url = array('controller' => 'messages', 'action' => 'add', 'threadid' => $id);
             }
-            $this->request->data = $message;
-             
-            $url = array('controller' => 'messages', 'type' => 'post', 'action' => 'edit', 'threadid' => $id);
-        } else {
-            $url = array('controller' => 'messages', 'action' => 'add', 'threadid' => $id);
-        }
 
-        $this->set('url', $url);
+            $this->set('url', $url);
+        } else {
+            $content = $this->request->data['Thread']['content'];
+            
+            //Prepare param for building searching input params
+            $params['index'] = Configure::read('chatsystem_index');
+            $params['type']  = Configure::read('message_type');
+            $params['body']['query']['match']['content'] = $content;
+
+            $esUtility = ElasticSearchUtility::getInstance();
+            $messages = $esUtility->search($params);
+            for ($i = 0; $i < $messages['hits']['total']; $i++) {
+                echo $messages['hits']['hits']['_source'];
+            }
+            
+            $this->set('thread', $messages);
+            
+            $url = array('controller' => 'threads', 'action' => 'view', 'threadid' => $id);
+            $this->set('url', $url);
+        }
     }
 
     /**
@@ -183,7 +201,7 @@ class ThreadsController extends AppController {
 
     /**
      * Search with input condition
-     * 
+     *
      * @author ThangNV
      */
     public function search()
@@ -197,7 +215,6 @@ class ThreadsController extends AppController {
 
             $esUtility = ElasticSearchUtility::getInstance();
             $messages = $esUtility->search($params);
-            var_dump($messages);
             $this->set('thread', $messages);
         }
     }

@@ -83,7 +83,7 @@
 			    'class' => 'btn btn-default');
 			echo $this->Form->create('Thread', array(
 			'class' => 'navbar-form navbar-left',
-			'url' => '/threads/search',
+			'url' => '/threads/view',
 			'role' => 'message',
 			'inputDefaults' => array(
 			    'format' => array('before', 'label', 'between', 'input', 'error', 'after'),
