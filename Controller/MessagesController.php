@@ -158,7 +158,15 @@ class MessagesController extends AppController {
 
                 //Prepare data for indexing
                 $params = array();
-                $params['body']  = array('content' => $this->request->data['Message']['content']);
+		//var_dump($this->request->data);
+		//var_dump($result['Message']);die();
+		//array(8) { ["status"]=> string(1) "0" ["title"]=> string(3) "xxx" ["content"]=> string(3) "xxx" ["thread_id"]=> string(1) "2" ["user_id"]=> string(1) "5" ["updated"]=> string(19) "2014-05-27 13:34:00" ["created"]=> string(19) "2014-05-27 13:34:00" ["id"]=> string(2) "66" }
+
+                $params['body']  = array('content' => $this->request->data['Message']['content'],
+			'thread_id' => $result['Message']['thread_id'], 'user_id'=> $result['Message']['user_id'], 
+			'status' => $result['Message']['status'],
+			'created' => $result['Message']['created'],
+			'updated' => $result['Message']['updated']);
 
                 $params['index'] = Configure::read('chatsystem_index');
                 $params['type']  = Configure::read('message_type');
