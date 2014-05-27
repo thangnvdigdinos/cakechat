@@ -114,9 +114,7 @@ class ThreadsController extends AppController {
             }
 
             $this->set('url', $url);
-            
-            $searchUrl = array('controller' => 'threads', 'action' => 'search', 'threadid' => $id);
-            $this->set('search_url', $searchUrl);
+            $this->set('search_url', '/threads/search/'.$id);
         }
     }
 
@@ -192,23 +190,35 @@ class ThreadsController extends AppController {
     public function search($threadId = null)
     {
         if ($this->request->is('post')) {
-            $content = $this->request->data['Thread']['content'];
+	    $thread = $this->Thread->findById($threadId);
+            if (!$thread) {
+                throw new NotFoundException(__('Invalid thread id'));
+            }
+
+	    $this->set('thread', $thread);
+
+            $content = $this->request->data['Message']['content'];
+	    $this->set('content', $content);
+	    $this->set('search_url', '/threads/search/'.$threadId);
             
             //Prepare param for building searching input params
             $params['index'] = Configure::read('chatsystem_index');
             $params['type']  = Configure::read('message_type');
-            $params['body']['query']['match']['content'] = $content;
+            $params['body']['query']['wildcard']['content'] = $content;
 
             $esUtility = ElasticSearchUtility::getInstance();
             $messages = $esUtility->search($params);
             $threads = array();
-
             for ($i = 0; $i < $messages['hits']['total']; $i++) {
-		        $threads['Message'][$i]['content'] = $messages['hits']['hits'][$i]['_source']['content'];
-		        $threads['Message'][$i]['id'] = '1';
+		$threads['Message'][$i]['content'] = $messages['hits']['hits'][$i]['_source']['content'];
+		$threads['Message'][$i]['id'] = $messages['hits']['hits'][$i]['_id'];
+		$threads['Message'][$i]['thread_id'] = $messages['hits']['hits'][$i]['_source']['thread_id'];
+		$threads['Message'][$i]['user_id'] = $messages['hits']['hits'][$i]['_source']['user_id'];
+		$threads['Message'][$i]['status'] = $messages['hits']['hits'][$i]['_source']['status'];
+		$threads['Message'][$i]['created'] = $messages['hits']['hits'][$i]['_source']['created'];
+		$threads['Message'][$i]['updated'] = $messages['hits']['hits'][$i]['_source']['updated'];
             }
-            var_dump($threads);die;
-            $this->set('thread', $threads);
+            $this->set('threads', $threads);
         }
     }
 }

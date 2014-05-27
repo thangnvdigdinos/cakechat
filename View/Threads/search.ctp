@@ -23,7 +23,8 @@
       		<ul class="nav navbar-nav">
 		        <form method="post" class="navbar-form navbar-left" action="<?php echo $search_url;?>" role="search">
                 		<div class="form-group">
-		                    <input type="text" name="data[Message][content]" id="MessageContent" class="form-control" placeholder="Search">
+		                    <input type="text" name="data[Message][content]" id="MessageContent" class="form-control" 
+					placeholder="Search" value="<?php echo $content; ?>">
                 		</div>
                 		<button type="submit" class="btn btn-default">Search</button>
 		        </form>
@@ -44,7 +45,9 @@
 					<th>Updated</th>
 				</tr>
 			</thead>
-			<?php foreach ($thread['Message'] as $message): ?>
+			<?php 
+				if (is_array($threads) && count($threads) > 0)
+				foreach ($threads['Message'] as $message): ?>
 			<tbody>
 				<tr>
 					<td><?php echo $message['id']; ?></td>
@@ -85,29 +88,4 @@
 			<?php unset($message); ?>
 		</table>
 	</div>
-	<nav class="navbar navbar-default" role="navigation">
-		<div class="collapse navbar-collapse" id="bs-example-navbar-collapse-1">
-		<?php
-			$options = array(
-			    'label' => 'Save Message',
-			    'class' => 'btn btn-default');
-			echo $this->Form->create('Message', array(
-			'class' => 'navbar-form navbar-left',
-			'url' => $url,
-			'role' => 'message',
-			'inputDefaults' => array(
-			    'format' => array('before', 'label', 'between', 'input', 'error', 'after'),
-			    'div' => array('class' => 'form-group'),
-			    'class' => array('form-control'),
-			    'label' => array('class' => 'navbar-text'),
-			    'between' => '<div class="form-group">',
-			    'after' => '</div>',
-			    'error' => array('attributes' => array('wrap' => 'span', 'class' => 'help-inline')),
-			)));
-			echo $this->Form->input('thread_id', array('type' => 'hidden', 'value' => $thread['Thread']['id']));
-			echo $this->Form->input('content');
-			echo $this->Form->end($options);
-		?>
-		</div>
-	</nav>
 </div>
