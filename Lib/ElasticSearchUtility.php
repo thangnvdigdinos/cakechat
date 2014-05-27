@@ -62,11 +62,11 @@ class ElasticSearchUtility {
      */
     public function exists($params = array())
     {
-        if (!isset($params)) {
+        if (!$params) {
             throw Exception('The index does not exist.');
         }
 
-        if (!isset($params['index'])) {
+        if (!$params['index']) {
             throw Exception('The index does not exist.');
         }
 
@@ -81,11 +81,11 @@ class ElasticSearchUtility {
      */
     public function index($params = array())
     {
-        if (!isset($params)) {
+        if (!$params) {
             throw Exception('The index does not exist.');
         }
 
-        if (!isset($params['index'])) {
+        if (!$params['index']) {
             throw Exception('The index does not exist.');
         }
 
@@ -100,11 +100,11 @@ class ElasticSearchUtility {
      */
     public function delete($params = array())
     {
-        if (!isset($params)) {
+        if (!$params) {
             throw Exception('The index does not exist.');
         }
 
-        if (!isset($params['index'])) {
+        if (!$params['index']) {
             throw Exception('The index does not exist.');
         }
 
