@@ -114,27 +114,9 @@ class ThreadsController extends AppController {
             }
 
             $this->set('url', $url);
-        } else {
-            $content = $this->request->data['Thread']['content'];
             
-            //Prepare param for building searching input params
-            $params['index'] = Configure::read('chatsystem_index');
-            $params['type']  = Configure::read('message_type');
-            $params['body']['query']['match']['content'] = $content;
-
-            $esUtility = ElasticSearchUtility::getInstance();
-            $messages = $esUtility->search($params);
-            $threads = array();
-	/*
-            for ($i = 0; $i < $messages['hits']['total']; $i++) {
-		$threads['Message'][$i]['content'] = $messages['hits']['hits'][$i]['_source']['content'];
-		$threads['Message'][$i]['id'] = '1';
-            }
-            
-            $this->set('thread', $threads);
-          */  
-            $url = array('controller' => 'threads', 'action' => 'view', 'threadid' => $id);
-            $this->set('url', $url);
+            $searchUrl = array('controller' => 'threads', 'action' => 'search', 'threadid' => $id);
+            $this->set('search_url', $searchUrl);
         }
     }
 
@@ -207,10 +189,11 @@ class ThreadsController extends AppController {
      *
      * @author ThangNV
      */
-    public function search()
+    public function search($threadId = null)
     {
         if ($this->request->is('post')) {
             $content = $this->request->data['Thread']['content'];
+            
             //Prepare param for building searching input params
             $params['index'] = Configure::read('chatsystem_index');
             $params['type']  = Configure::read('message_type');
@@ -218,7 +201,14 @@ class ThreadsController extends AppController {
 
             $esUtility = ElasticSearchUtility::getInstance();
             $messages = $esUtility->search($params);
-            $this->set('thread', $messages);
+            $threads = array();
+
+            for ($i = 0; $i < $messages['hits']['total']; $i++) {
+		        $threads['Message'][$i]['content'] = $messages['hits']['hits'][$i]['_source']['content'];
+		        $threads['Message'][$i]['id'] = '1';
+            }
+            var_dump($threads);die;
+            $this->set('thread', $threads);
         }
     }
 }
