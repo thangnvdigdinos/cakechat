@@ -25,6 +25,11 @@ class ElasticSearchBase {
             $this->client = new Elasticsearch\Client($host);
         }
     }
+    
+    protected function getClient()
+    {
+        return $this->client;
+    }
 }
 
 class ElasticSearchUtility extends ElasticSearchBase implements ElasticSeachInterface {
@@ -58,7 +63,7 @@ class ElasticSearchUtility extends ElasticSearchBase implements ElasticSeachInte
         if (null == $client) {
             // Alternatively you can use dsn string
             parent::__construct($client);
-            $this->client = parent::$this->client;
+            $this->client = parent::getClient();
         } else {
             parent::__construct($client);
             $this->client = $client;
