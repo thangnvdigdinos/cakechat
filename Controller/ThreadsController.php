@@ -189,17 +189,15 @@ class ThreadsController extends AppController {
     public function search()
     {
         if ($this->request->is('post')) {
-            $content = $this->request->data['Message']['content'];
-
+            $content = $this->request->data['Thread']['content'];
             //Prepare param for building searching input params
             $params['index'] = Configure::read('chatsystem_index');
             $params['type']  = Configure::read('message_type');
             $params['body']['query']['match']['content'] = $content;
 
             $esUtility = ElasticSearchUtility::getInstance();
-            var_dump($params);
             $messages = $esUtility->search($params);
-            
+            var_dump($messages);
             $this->set('thread', $messages);
         }
     }
