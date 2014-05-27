@@ -203,7 +203,7 @@ class MessagesController extends AppController {
                 $params['id']    = $id;
 
                 $esUtility = ElasticSearchUtility::getInstance();
-                $esUtility->index($params);
+                $esUtility->delete($params);
 
                 $this->Session->setFlash(__("Your message has been deleted."));
                 return $this->redirect(array('controller' => 'threads', 'action' => 'view', $threadId));

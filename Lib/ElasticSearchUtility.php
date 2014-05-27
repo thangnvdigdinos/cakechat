@@ -70,12 +70,6 @@ class ElasticSearchUtility {
             throw Exception('The index does not exist.');
         }
 
-        //        //Get hosts array from config file
-        //        $host['hosts'] = Configure::read('hosts');
-        //
-        //        // Alternatively you can use dsn string
-        //        $client = new Elasticsearch\Client($host);
-
         return $this->client->indices()->exists($params['index']);
     }
 
@@ -95,12 +89,6 @@ class ElasticSearchUtility {
             throw Exception('The index does not exist.');
         }
 
-        //        //Get hosts array from config file
-        //        $host['hosts'] = Configure::read('hosts');
-        //
-        //        // Alternatively you can use dsn string
-        //        $client = new Elasticsearch\Client($host);
-
         $this->client->index($params);
     }
 
@@ -119,12 +107,6 @@ class ElasticSearchUtility {
         if (!isset($params['index'])) {
             throw Exception('The index does not exist.');
         }
-
-        //        //Get hosts array from config file
-        //        $host['hosts'] = Configure::read('hosts');
-        //
-        //        // Alternatively you can use dsn string
-        //        $client = new Elasticsearch\Client($host);
 
         $this->client->delete($params);
     }
