@@ -36,10 +36,10 @@ class ThreadsController extends AppController {
     public $validate = array(
 	    'threadname' => array(
 		    'rule' => 'notEmpty'
-        ),
+    ),
 		'body' => array(
             'rule' => 'notEmpty'
-        )
+    )
     );
 
     public function beforeFilter()
@@ -51,7 +51,7 @@ class ThreadsController extends AppController {
      * Verify authorized user
      * @see AppController::isAuthorized()
      **/
-    public function isAuthorized($user) 
+    public function isAuthorized($user)
     {
         // All registered users can add thread
         if ($this->action === 'add') {
@@ -108,7 +108,7 @@ class ThreadsController extends AppController {
                 throw new NotFoundException();
             }
             $this->request->data = $message;
-            	
+             
             $url = array('controller' => 'messages', 'type' => 'post', 'action' => 'edit', 'threadid' => $id);
         } else {
             $url = array('controller' => 'messages', 'action' => 'add', 'threadid' => $id);
@@ -122,7 +122,7 @@ class ThreadsController extends AppController {
      * @param string $id: id of thread
      * @throws NotFoundException
      **/
-    public function edit($id = null) 
+    public function edit($id = null)
     {
         $this->Thread->id = $id;
         if (!$this->Thread->exists()) {
@@ -178,6 +178,28 @@ class ThreadsController extends AppController {
                 return $this->redirect(array('action' => 'index'));
             }
             $this->Session->setFlash(__("Unable to delete this thread."));
+        }
+    }
+
+    /**
+     * Search with input condition
+     * 
+     * @author ThangNV
+     */
+    public function search()
+    {
+        if ($this->request->is('post')) {
+            $content = $this->request->data['Message']['content'];
+
+            //Prepare param for building searching input params
+            $params['index'] = Configure::read('chatsystem_index');
+            $params['type']  = Configure::read('message_type');
+            $params['body']['query']['match']['content'] = $content;
+
+            $esUtility = ElasticSearchUtility::getInstance();
+            $messages = $esUtility->search($params);
+            var_dump($messages);
+            $this->set('thread', $messages);
         }
     }
 }

@@ -1,5 +1,33 @@
 <?php
-class ElasticSearchUtility {
+
+interface ElasticSeachInterface {
+
+    function exists($params = array());
+    function index($params = array());
+    function delete($params = array());
+    function search($params = array());
+    function update($params = array());
+}
+
+class ElasticSearchBase {
+
+    protected $client = null;
+
+    protected function __construct($client = null)
+    {
+        if (null === $client) {
+            $this->client = $client;
+        } else {
+            //Get hosts array from config file
+            $host['hosts'] = Configure::read('hosts');
+
+            // Alternatively you can use dsn string
+            $this->client = new Elasticsearch\Client($host);
+        }
+    }
+}
+
+class ElasticSearchUtility extends ElasticSearchBase implements ElasticSeachInterface {
 
     protected static $instance = null;
     protected $client = null;
@@ -19,19 +47,22 @@ class ElasticSearchUtility {
 
         return self::$instance;
     }
-    
+
 
     /**
      * Protected constructor to prevent creating a new instance of the
      * *Singleton* via the `new` operator from outside of this class.
      */
-    protected function __construct()
+    protected function __construct($client = null)
     {
-        //Get hosts array from config file
-        $host['hosts'] = Configure::read('hosts');
-
-        // Alternatively you can use dsn string
-        $this->client = new Elasticsearch\Client($host);
+        if (null == $client) {
+            // Alternatively you can use dsn string
+            parent::__construct($client);
+            $this->client = parent::$this->client;
+        } else {
+            parent::__construct($client);
+            $this->client = $client;
+        }
     }
 
     /**
@@ -63,11 +94,11 @@ class ElasticSearchUtility {
     public function exists($params = array())
     {
         if (!$params) {
-            throw Exception('The index does not exist.');
+            throw NotFoundException('The index does not exist.');
         }
 
         if (!$params['index']) {
-            throw Exception('The index does not exist.');
+            throw NotFoundException('The index does not exist.');
         }
 
         return $this->client->indices()->exists($params['index']);
@@ -76,17 +107,18 @@ class ElasticSearchUtility {
     /**
      * indexing data
      * @param array $params
+     * @example params['index'], params['type'], params['id'], params['body']
      *
      * @author ThangNV
      */
     public function index($params = array())
     {
         if (!$params) {
-            throw Exception('The index does not exist.');
+            throw NotFoundException('The index does not exist.');
         }
 
         if (!$params['index']) {
-            throw Exception('The index does not exist.');
+            throw NotFoundException('The index does not exist.');
         }
 
         $this->client->index($params);
@@ -95,19 +127,56 @@ class ElasticSearchUtility {
     /**
      * indexing data via call to ElasticSearch server
      * @param array $params
+     * @example params['index'], params['type'], params['id']
      *
      * @author ThangNV
      */
     public function delete($params = array())
     {
         if (!$params) {
-            throw Exception('The index does not exist.');
+            throw NotFoundException('The index does not exist.');
         }
 
         if (!$params['index']) {
-            throw Exception('The index does not exist.');
+            throw NotFoundException('The index does not exist.');
         }
 
         $this->client->delete($params);
+    }
+
+    /**
+     * Search data from ES server
+     * @param array $params
+     * @example
+     * $params['index'] = 'my_index';
+     * $params['type']  = 'my_type';
+     * $params['body']['query']['match']['testField'] = 'abc';
+     * 
+     * @author ThangNV
+     */
+    public function search($params = array())
+    {
+        if (!$params) {
+            throw NotFoundException('The index does not exist.');
+        }
+
+        if (!$params['index']) {
+            throw NotFoundException('The index does not exist.');
+        }
+
+        if (!$params['type']) {
+            throw NotFoundException('The type does not exist.');
+        }
+
+        if (!$params['body']) {
+            throw NotFoundException('The type does not exist.');
+        }
+
+        return $this->client->search($params);
+    }
+
+    public function update($params = array())
+    {
+
     }
 }

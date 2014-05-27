@@ -79,6 +79,31 @@
 		<div class="collapse navbar-collapse" id="bs-example-navbar-collapse-1">
 		<?php
 			$options = array(
+			    'label' => 'Search Message',
+			    'class' => 'btn btn-default');
+			echo $this->Form->create('Thread', array(
+			'class' => 'navbar-form navbar-left',
+			'url' => '/threads/search',
+			'role' => 'message',
+			'inputDefaults' => array(
+			    'format' => array('before', 'label', 'between', 'input', 'error', 'after'),
+			    'div' => array('class' => 'form-group'),
+			    'class' => array('form-control'),
+			    'label' => array('class' => 'navbar-text'),
+			    'between' => '<div class="form-group">',
+			    'after' => '</div>',
+			    'error' => array('attributes' => array('wrap' => 'span', 'class' => 'help-inline')),
+			)));
+			echo $this->Form->input('thread_id', array('type' => 'hidden', 'value' => $thread['Thread']['id']));
+			echo $this->Form->input('content');
+			echo $this->Form->end($options);
+		?>
+		</div>
+	</nav>
+	<nav class="navbar navbar-default" role="navigation">
+		<div class="collapse navbar-collapse" id="bs-example-navbar-collapse-1">
+		<?php
+			$options = array(
 			    'label' => 'Save Message',
 			    'class' => 'btn btn-default');
 			echo $this->Form->create('Message', array(

@@ -140,7 +140,7 @@ class MessagesController extends AppController {
             unset($this->request->data['Message']['password']);
         }
     }
-    
+
 
     /**
      * Add a message
@@ -177,10 +177,11 @@ class MessagesController extends AppController {
     }
 
     /**
-     * Delete a message
+     * Delete a message from ElasticSearch server
      * @param int $id: id of message
      * @param int $id: id of thread
      * @throws NotFoundException
+     *
      * @author ThangNV
      **/
     public function delete($id, $threadId)
