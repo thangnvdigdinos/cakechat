@@ -2,11 +2,11 @@
 
 interface ElasticSeachInterface {
 
-    function exists($params = array());
-    function index($params = array());
-    function delete($params = array());
+    function exists($params);
+    function index($params);
+    function delete($params);
     function search($params = array());
-    function update($params = array());
+    function update($params);
 }
 
 class ElasticSearchBase {
@@ -37,7 +37,6 @@ class ElasticSearchBase {
 class ElasticSearchUtility extends ElasticSearchBase implements ElasticSeachInterface {
 
     protected static $instance = null;
-    protected $client = null;
 
     /**
      * Returns the *Singleton* instance of this class.
