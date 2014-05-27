@@ -16,13 +16,13 @@ class ElasticSearchBase {
     protected function __construct($client = null)
     {
         if (null === $client) {
-            $this->client = $client;
-        } else {
             //Get hosts array from config file
             $host['hosts'] = Configure::read('hosts');
 
             // Alternatively you can use dsn string
             $this->client = new Elasticsearch\Client($host);
+        } else {
+            $this->client = $client;
         }
     }
     
@@ -62,11 +62,11 @@ class ElasticSearchUtility extends ElasticSearchBase implements ElasticSeachInte
     {
         if (null == $client) {
             // Alternatively you can use dsn string
-            parent::__construct($client);
-            $this->client = parent::getClient();
+            parent::__construct();
+            $this->client = parent::$client;
         } else {
             parent::__construct($client);
-            $this->client = $client;
+            $this->client = parent::$client;
         }
     }
 
