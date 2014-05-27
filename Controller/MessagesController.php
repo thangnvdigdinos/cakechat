@@ -36,10 +36,10 @@ class MessagesController extends AppController {
     public $validate = array(
         'title' => array(
             'rule' => 'notEmpty'
-        ),
+    ),
     	'content' => array(
             'rule' => 'notEmpty'
-        )
+    )
     );
 
     public function beforeFilter()
@@ -50,7 +50,7 @@ class MessagesController extends AppController {
     /**
      * Verify authorized user
      * @see AppController::isAuthorized()
-     * 
+     *
      * @author ThangNV
      **/
     public function isAuthorized($user)
@@ -73,7 +73,7 @@ class MessagesController extends AppController {
 
     /**
      * List all message in Message table
-     * 
+     *
      * @author ThangNV
      **/
     public function index()
@@ -85,7 +85,7 @@ class MessagesController extends AppController {
      * View message detail
      * @param string $id: id of message
      * @throws NotFoundException
-     * 
+     *
      * @author ThangNV
      **/
     public function view($id = null)
@@ -105,7 +105,7 @@ class MessagesController extends AppController {
      * Edit message info
      * @param string $id: id of message
      * @throws NotFoundException
-     * 
+     *
      * @author ThangNV
      **/
     public function edit($id = null, $threadId = null)
@@ -116,11 +116,11 @@ class MessagesController extends AppController {
         }
 
         if ($this->request->is('post') || $this->request->is('put')) {
-	    $result = $this->Message->save($this->request->data);
+            $result = $this->Message->save($this->request->data);
             if ($result) {
                 $this->Session->setFlash(__('The message has been saved'));
-		
-		//Prepare data for indexing
+
+                //Prepare data for indexing
                 $params = array();
                 $params['body']  = array('content' => $this->request->data['Message']['content']);
 
@@ -128,7 +128,8 @@ class MessagesController extends AppController {
                 $params['type']  = Configure::read('message_type');
                 $params['id']    = $id;
 
-                ElasticSearchUtility::index($params);
+                $esUtility = ElasticSearchUtility::getInstance();
+                $esUtility->index($params);
 
                 //after save message then redirect to thread detail page
                 return $this->redirect(array('controller' => 'threads', 'action' => 'view', $this->request->data['Message']['thread_id']));
@@ -139,10 +140,11 @@ class MessagesController extends AppController {
             unset($this->request->data['Message']['password']);
         }
     }
+    
 
     /**
      * Add a message
-     * 
+     *
      * @author ThangNV
      **/
     public function add()
@@ -162,7 +164,8 @@ class MessagesController extends AppController {
                 $params['type']  = Configure::read('message_type');
                 $params['id']    = $result['Message']['id'];
 
-                ElasticSearchUtility::index($params);
+                $esUtility = ElasticSearchUtility::getInstance();
+                $esUtility->index($params);
 
                 //after save message then redirect to thread detail page
                 return $this->redirect(array('controller' => 'threads', 'action' => 'view', $this->request->data['Message']['thread_id']));
@@ -194,13 +197,14 @@ class MessagesController extends AppController {
             $this->request->data = $this->Message->findById($id);
             $this->request->data['Message']['status'] = 1;
             if ($this->Message->save($this->request->data)) {
-                
+
                 $params['index'] = Configure::read('chatsystem_index');
                 $params['type']  = Configure::read('message_type');
                 $params['id']    = $id;
 
-                ElasticSearchUtility::delete($params);
-                
+                $esUtility = ElasticSearchUtility::getInstance();
+                $esUtility->index($params);
+
                 $this->Session->setFlash(__("Your message has been deleted."));
                 return $this->redirect(array('controller' => 'threads', 'action' => 'view', $threadId));
             }
