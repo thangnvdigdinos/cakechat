@@ -198,6 +198,7 @@ class ThreadsController extends AppController {
 	    $this->set('thread', $thread);
 
             $content = $this->request->data['Message']['content'];
+	    $content = trim($content);
 	    $this->set('content', $content);
 	    $this->set('search_url', '/threads/search/'.$threadId);
             
