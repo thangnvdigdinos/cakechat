@@ -63,10 +63,8 @@ class ElasticSearchUtility extends ElasticSearchBase implements ElasticSeachInte
         if (null === $client) {
             // Alternatively you can use dsn string
             parent::__construct();
-            //$this->client = parent::$client;
         } else {
             parent::__construct($client);
-            //$this->client = parent::$client;
         }
     }
 
