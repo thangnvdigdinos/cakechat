@@ -124,13 +124,15 @@ class ThreadsController extends AppController {
 
             $esUtility = ElasticSearchUtility::getInstance();
             $messages = $esUtility->search($params);
-            
+            $threads = array();
+	/*
             for ($i = 0; $i < $messages['hits']['total']; $i++) {
-                echo $messages['hits']['hits']['_source'];
+		$threads['Message'][$i]['content'] = $messages['hits']['hits'][$i]['_source']['content'];
+		$threads['Message'][$i]['id'] = '1';
             }
             
-            $this->set('thread', $messages);
-            
+            $this->set('thread', $threads);
+          */  
             $url = array('controller' => 'threads', 'action' => 'view', 'threadid' => $id);
             $this->set('url', $url);
         }
