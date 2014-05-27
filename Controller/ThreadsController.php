@@ -124,6 +124,7 @@ class ThreadsController extends AppController {
 
             $esUtility = ElasticSearchUtility::getInstance();
             $messages = $esUtility->search($params);
+            
             for ($i = 0; $i < $messages['hits']['total']; $i++) {
                 echo $messages['hits']['hits']['_source'];
             }
